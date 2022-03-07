@@ -1,0 +1,71 @@
+/*--------------------- Responsive (Start) ---------------------*/
+@media (max-width: 991px){
+    html{
+        font-size: 55%;
+    }
+
+    .sidebar{
+        left: -120%;
+    }
+
+    .sidebar.active{
+        left: 0%;
+    }
+
+    #menu{
+        display: block;
+    }
+
+    body{
+        padding: 0;
+    }
+
+}
+
+@media (max-width: 768px){
+    .logo img{
+        width: 90px; 
+        height: auto;
+     }
+    section{
+        padding: 2rem;
+    }
+
+    .contact-info .info-item{
+        width: calc(100%/2 - 1rem);
+    }
+}
+
+@media (max-width: 450px){
+    html{
+        font-size: 50%;
+    }
+
+    .sidebar{
+        width: 100%;
+    }
+
+    section{
+        padding: 1rem;
+    }
+
+    .contact .form{
+        width: 100%;
+    }
+
+    .contact-info .info-item{
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .portfolio-item{
+        width: 100%;
+    }
+
+    .service-item{
+        margin: 1rem 0;
+    }
+    
+}
+
+/*--------------------- Responsive (End) ---------------------*/
