@@ -23,6 +23,10 @@
 }
 
 @media (max-width: 768px){
+    .about .image img {
+        transform: perspective(600px) rotatey(0deg);;
+    }
+
     .logo img{
         width: 90px; 
         height: auto;
