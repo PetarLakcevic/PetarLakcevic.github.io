@@ -45,6 +45,14 @@
 }
 
 
+.content p a {
+    color: #00a2e2;
+    text-decoration: none;
+}
+
+.content p a:hover {
+    padding: 0.5%;
+}
 .info a{
     text-decoration: none;
     color: rgb(100, 96, 96);
