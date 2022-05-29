@@ -94,17 +94,23 @@ section{
     background:#222;
 }
 
+h3{
+    text-decoration: underline #00a2e2;
+    
+}
+
 /*--------------------- 0- Global CSS (End) ---------------------*/
 
 
 
 /*--------------------- 1- Heading CSS (Start) ---------------------*/
 .heading{
-    margin: 2rem 0rem;
+    margin-top: 2rem;
+    margin-bottom: 5rem;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    margin-bottom: 3rem;
+ 
 }
 
 .heading h2{
@@ -271,7 +277,7 @@ section{
 
 .sidebar .navbar a{
     display: block;
-    font-size: 2rem;
+    font-size: 2.7rem;
     color: #fff;
     margin: 1rem 0;
 }
@@ -472,12 +478,93 @@ section{
 
 /*--------------------- 7- Skills Area CSS (End) ---------------------*/
 
+.tech-div {
+    display: -webkit-box;
+    display: -ms-flexbox; 
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        /* justify-content: space-between; */
+    
+}
+
+.tech-div li{
+    font-size: 2rem;
+    color: #fff;
+    padding: 1.5rem 0;
+    font-weight: 350;
+    list-style-type: disc;
+    margin: 0rem 5rem;
+}
+
+
+.skill-container .box-container{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+
+.skill-item{
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 33rem;
+        flex: 1 1 33rem;
+    background-color: #111;
+    border: 0.1rem solid #fff;
+    padding: 4rem 3rem;
+    text-align: center;
+    border-radius: 0.5rem;
+    -webkit-transition: all 0.5s linear;
+    -moz-transition: all 0.5s linear;
+    -o-transition: all 0.5s linear;
+    transition: all 0.5s linear;
+    margin: 1rem;
+}
+
+.skill-item:hover{
+    border-color: #00a2e2;
+}
+
+.skill-item i{
+    color: #00a2e2;
+    font-size: 4rem;
+}
+
+.skill-item h3{
+    font-size: 2.2rem;
+    color: #fff;
+    padding: 1.5rem 0;
+}
+
+.skill-item p{
+    font-size: 1.6rem;
+    color: #999;
+    line-height: 1.6;
+}
+
 
 
 /*--------------------- 8- Experience Area CSS (Start) ---------------------*/
 .experience{
     padding-bottom: 0;
 }
+
+
 
 .experience .box-container{
     display: -webkit-box;
@@ -561,63 +648,6 @@ section{
     color: #00a2e2;
 }
 /*--------------------- 8- Experience Area CSS (End) ---------------------*/
-
-
-
-/*--------------------- 9- Services Area CSS (Start) ---------------------*/
-.service .box-container{
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    margin-top: 2rem;
-}
-
-.service-item{
-    -webkit-box-flex: 1;
-    -ms-flex: 1 1 33rem;
-        flex: 1 1 33rem;
-    background-color: #111;
-    border: 0.1rem solid #fff;
-    padding: 4rem 3rem;
-    text-align: center;
-    border-radius: 0.5rem;
-    -webkit-transition: all 0.5s linear;
-    -moz-transition: all 0.5s linear;
-    -o-transition: all 0.5s linear;
-    transition: all 0.5s linear;
-    margin: 1rem;
-}
-
-.service-item:hover{
-    border-color: #00a2e2;
-}
-
-.service-item i{
-    color: #00a2e2;
-    font-size: 4rem;
-}
-
-.service-item h3{
-    font-size: 2rem;
-    color: #fff;
-    padding: 1.5rem 0;
-}
-
-.service-item p{
-    font-size: 1.6rem;
-    color: #999;
-    line-height: 1.6;
-}
-
-/*--------------------- 9- Services Area CSS (End) ---------------------*/
 
 
 
@@ -777,85 +807,6 @@ section{
 }
 
 /*--------------------- 10- Portfolio Area CSS (End) ---------------------*/
-
-
-
-/*--------------------- 11- Blog Area CSS (Start) ---------------------*/
-.blog{
-    position: relative;
-    overflow: hidden;
-}
-
-.blog .box-container{
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-}
-
-.blog-item{
-    -webkit-box-flex: 1;
-    -ms-flex: 1 1 33rem;
-        flex: 1 1 33rem;
-    border-radius: 0.5rem;
-    margin: 1rem;
-    -webkit-box-shadow: 0 0.5rem 1rem rgba(255, 255, 255, 0.15);
-            box-shadow: 0 0.5rem 1rem rgba(255, 255, 255, 0.15);
-}
-
-.blog-item .image{
-    height: 25rem;
-    overflow: hidden;
-}
-
-.blog-item:hover .image img{
-    -webkit-transform: scale(1.2);
-            transform: scale(1.2);
-}
-
-.blog-item .image img{
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-}
-
-.blog-item .content{
-    padding: 2rem
-}
-
-.blog-item .content .main-heading{
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #eee;
-    line-height: 1.4;
-}
-
-.blog-item .content h5{
-    padding-top: 1.5rem;
-    color: #00a2e2;
-    font-size: 1.5rem;
-}
-
-.blog-item .content h5 i{
-    padding-right: 0.5rem;
-}
-
-.blog-item p{
-    padding: 1.5rem 0;
-    font-size: 1.6rem;
-    color: #666;
-    line-height: 1.5;
-}
-
-/*--------------------- 11- Blog Area CSS (End) ---------------------*/
-
 
 
 /*--------------------- 12- Contact Area CSS (Start) ---------------------*/
