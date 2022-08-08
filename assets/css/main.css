@@ -982,7 +982,7 @@ h3 {
 /*-------------------collap------------------------*/
 
 .collapsible {
-    margin-top: 5px;
+   
     color: white;
     cursor: pointer;
     padding: 18px;
@@ -1015,7 +1015,7 @@ h3 {
     overflow: hidden;
     transition: max-height 0.2s ease-out;
     background-color: transparent;
-    border: solid 1px #00a2e2;
+    border: solid 1px #04648a;
     background-color: #00a2e2 ;
 }
 
@@ -1027,6 +1027,7 @@ h3 {
 }
 
 .collapsible-active{
+    
     background-color: #04648a;
 }
 
