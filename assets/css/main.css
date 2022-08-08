@@ -1025,7 +1025,10 @@ h3 {
    color: white;
   
 }
-
+.collapsible span {
+    color:#00a2e2;
+    font-size: 1.1rem;
+}
 .collapsible-active{
     
     background-color: #04648a;
