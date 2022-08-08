@@ -23,15 +23,15 @@
 /*--------------------- 0- Global CSS (Start) ---------------------*/
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 
-:root{
+:root {
     --blue: #00a2e2;
 }
 
-*{
+* {
     list-style: none;
     font-family: 'Roboto', sans-serif;
     -webkit-box-sizing: border-box;
-            box-sizing: border-box;
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
     text-decoration: none;
@@ -53,50 +53,53 @@
 .content p a:hover {
     padding: 0.5%;
 }
-.info a{
+
+.info a {
     text-decoration: none;
     color: rgb(100, 96, 96);
 }
-.info a:hover{
+
+.info a:hover {
     color: #00a2e2;
     padding: 0.5%;
 }
-*::selection{
+
+*::selection {
     color: #fff;
     background-color: #00a2e2;
 }
 
-html{
+html {
     font-size: 62.5%;
     overflow-x: hidden;
     scroll-behavior: smooth;
 }
 
-body{
+body {
     background-color: #111;
     padding-left: 30rem;
 }
 
-section{
+section {
     padding: 2rem 5%;
 }
 
-::-webkit-scrollbar{
+::-webkit-scrollbar {
     width: 0.8rem;
 }
 
-::-webkit-scrollbar-thumb{
+::-webkit-scrollbar-thumb {
     border-radius: 1rem;
     background-color: #00a2e2;
 }
 
-::-webkit-scrollbar-track{
-    background:#222;
+::-webkit-scrollbar-track {
+    background: #222;
 }
 
-h3{
+h3 {
     text-decoration: underline #00a2e2;
-    
+
 }
 
 /*--------------------- 0- Global CSS (End) ---------------------*/
@@ -104,29 +107,30 @@ h3{
 
 
 /*--------------------- 1- Heading CSS (Start) ---------------------*/
-.heading{
+.heading {
     margin-top: 2rem;
     margin-bottom: 5rem;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
- 
+
 }
 
-.heading h2{
+.heading h2 {
     color: #fff;
     font-size: 4rem;
     position: relative;
 }
 
-.heading h2 span{
+.heading h2 span {
     color: #00a2e2;
 }
 
-.heading h2::before{
+.heading h2::before {
     content: '';
     position: absolute;
-    bottom: -0.5rem; left: 0;
+    bottom: -0.5rem;
+    left: 0;
     background: #00a2e2;
     height: 0.2rem;
     width: 102%;
@@ -137,15 +141,15 @@ h3{
 
 
 /*--------------------- 2- Button CSS (Start) ---------------------*/
-.btn{
+.btn {
     display: inline-block;
-	padding: 1rem 3rem;
-	color: #00a2e2;
+    padding: 1rem 3rem;
+    color: #00a2e2;
     background-color: transparent;
-	font-size: 1.8rem;
-	letter-spacing: 0.1rem;
-	border: 0.1rem solid #00a2e2;
-	position: relative;
+    font-size: 1.8rem;
+    letter-spacing: 0.1rem;
+    border: 0.1rem solid #00a2e2;
+    position: relative;
     -webkit-transition: 1s;
     -moz-transition: 1s;
     -o-transition: 1s;
@@ -153,54 +157,54 @@ h3{
     overflow: hidden;
 }
 
-.btn:before{
-	content: '';
-	position: absolute;
+.btn:before {
+    content: '';
+    position: absolute;
     display: block;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-color: #00a2e2;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #00a2e2;
     -webkit-transition: 1s;
     -moz-transition: 1s;
     -o-transition: 1s;
     transition: 1s;
     -webkit-transform: rotateX(90deg);
-            transform: rotateX(90deg);
-	z-index: -1;
+    transform: rotateX(90deg);
+    z-index: -1;
 }
 
-.btn:after{
-	content: '';
-	position: absolute;
+.btn:after {
+    content: '';
+    position: absolute;
     display: block;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-color: #00a2e2;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #00a2e2;
     -webkit-transition: 1s;
     -moz-transition: 1s;
     -o-transition: 1s;
     transition: 1s;
     -webkit-transform: rotateY(90deg);
-            transform: rotateY(90deg);
-	z-index: -1;
+    transform: rotateY(90deg);
+    z-index: -1;
 }
 
-.btn:hover:before{
+.btn:hover:before {
     -webkit-transform: rotateX(0);
-            transform: rotateX(0);
+    transform: rotateX(0);
 }
 
-.btn:hover:after{
+.btn:hover:after {
     -webkit-transform: rotateY(0);
-            transform: rotateY(0);
+    transform: rotateY(0);
 }
 
-.btn:hover{
-	color: #fff;
+.btn:hover {
+    color: #fff;
     cursor: pointer;
 }
 
@@ -209,7 +213,7 @@ h3{
 
 
 /*--------------------- 3- Menubar CSS (Start) ---------------------*/
-#menu{
+#menu {
     position: fixed;
     z-index: 10000;
     top: 1rem;
@@ -226,7 +230,7 @@ h3{
     display: none;
 }
 
-#menu:hover{
+#menu:hover {
     color: #00a2e2;
 }
 
@@ -235,7 +239,7 @@ h3{
 
 
 /*--------------------- 4- Sidebar Area CSS (Start) ---------------------*/
-.sidebar{
+.sidebar {
     position: fixed;
     top: 0;
     left: 0;
@@ -245,37 +249,37 @@ h3{
     display: -ms-flexbox;
     display: flex;
     -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
     z-index: 1000;
-    background:#1a1a1a;
+    background: #1a1a1a;
     padding: 2rem 0;
     text-align: center;
     -webkit-transition: all 0.5s linear;
     -moz-transition: all 0.5s linear;
     -o-transition: all 0.5s linear;
     transition: all 0.5s linear;
-  overflow-y: auto;
+    overflow-y: auto;
 }
 
-.sidebar .logo h2{
+.sidebar .logo h2 {
     color: #00a2e2;
     font-size: 4rem;
     font-weight: bold;
     padding-top: 4rem;
     letter-spacing: 0.2rem;
     text-transform: uppercase;
-    
+
 }
 
-.sidebar .navbar a{
+.sidebar .navbar a {
     display: block;
     font-size: 2.7rem;
     color: #fff;
@@ -283,23 +287,23 @@ h3{
 }
 
 .sidebar .navbar a:hover,
-.sidebar .navbar a.active{
-    color: #00a2e2 ;
+.sidebar .navbar a.active {
+    color: #00a2e2;
 }
 
-.sidebar .footer{
+.sidebar .footer {
     text-align: center;
     width: 100%;
 }
 
-.sidebar .footer p{
+.sidebar .footer p {
     color: #fff;
     font-size: 2rem;
     line-height: 1.5;
     padding: 3rem;
 }
 
-.sidebar .footer p span{
+.sidebar .footer p span {
     color: #00a2e2;
 }
 
@@ -308,7 +312,7 @@ h3{
 
 
 /*--------------------- 5- Home Area CSS (Start) ---------------------*/
-.home{
+.home {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -317,41 +321,41 @@ h3{
     justify-content: center;
     -webkit-box-align: center;
     -ms-flex-align: center;
-       align-items: center;
-    height: 1px; 
+    align-items: center;
+    height: 1px;
     min-height: 100vh;
 }
 
-.home .content{
+.home .content {
     text-align: center;
     width: 50rem;
 }
 
-.home .content img{
+.home .content img {
     border-radius: 50%;
     border: 0.5rem solid #00a2e2;
     margin-bottom: 2rem;
     height: 25rem;
 }
 
-.home .content h5{
+.home .content h5 {
     font-size: 2.5rem;
     font-weight: 400;
     color: #fff;
 }
 
-.home .content h5 span{
-    color:#00a2e2;
+.home .content h5 span {
+    color: #00a2e2;
 }
 
-.home .content p{
+.home .content p {
     font-size: 1.6rem;
     color: #fff;
     line-height: 1.5;
     padding: 2rem 0;
 }
 
-.home .content .social{
+.home .content .social {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -361,7 +365,7 @@ h3{
 
 }
 
-.home .content .social .fab{
+.home .content .social .fab {
     height: 4.5rem;
     width: 4.5rem;
     border-radius: 50%;
@@ -376,11 +380,11 @@ h3{
     justify-content: center;
     -webkit-box-align: center;
     -ms-flex-align: center;
-       align-items: center;
+    align-items: center;
     margin: 0rem 0.5rem;
 }
 
-.home .content .social .fab:hover{
+.home .content .social .fab:hover {
     color: #fff;
     background-color: #00a2e2;
 }
@@ -390,7 +394,7 @@ h3{
 
 
 /*--------------------- 6- About Area CSS (Start) ---------------------*/
-.about .personal-info{
+.about .personal-info {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -398,40 +402,41 @@ h3{
     -ms-flex-pack: center;
     justify-content: center;
     -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
+    flex-wrap: wrap;
 }
 
-.about .image{
+.about .image {
     width: 30rem;
     text-align: center;
 
     margin-bottom: 2rem;
 }
 
-.about .image img{
+.about .image img {
     width: 100%;
     box-shadow: 0px 0px 50px -15px #00a2e2;
     transform: perspective(600px) rotatey(10deg);
-    
+
 }
 
-.about .content{
+.about .content {
     -webkit-box-flex: 1;
     -ms-flex: 1 1 40rem;
-        flex: 1 1 40rem;
+    flex: 1 1 40rem;
     margin-left: 2rem;
 }
 
-.about .content h2{
+.about .content h2 {
     font-size: 3rem;
     color: #00a2e2;
     padding-bottom: 1rem;
 }
 
-.active-exp{
+.active-exp {
     background-color: #333 !important;
 }
-.about .content > p{
+
+.about .content>p {
     font-size: 1.6rem;
     color: #eee;
     line-height: 1.5;
@@ -439,23 +444,24 @@ h3{
 }
 
 
-.about .content .about-info{
+.about .content .about-info {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    padding: 1rem 0;;
+    padding: 1rem 0;
+    ;
 }
 
-.about .content .about-info h4{
+.about .content .about-info h4 {
     font-size: 1.6rem;
     color: #00a2e2;
     padding-bottom: 1rem;
 }
 
-.about .content .about-info span{
+.about .content .about-info span {
     font-size: 1.6rem;
     font-weight: 400;
     color: #fff;
@@ -467,11 +473,12 @@ h3{
 
 /*--------------------- 7- Skills Area CSS (Start) ---------------------*/
 
-.logo img{
-   width: 130px; 
-   height: auto;
+.logo img {
+    width: 130px;
+    height: auto;
 }
-.footer span{
+
+.footer span {
     font-size: 70%;
     font-style: italic;
 }
@@ -479,32 +486,6 @@ h3{
 /*--------------------- 7- Skills Area CSS (End) ---------------------*/
 
 .tech-div {
-    display: -webkit-box;
-    display: -ms-flexbox; 
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-        /* justify-content: space-between; */
-    
-}
-
-.tech-div li{
-    font-size: 2rem;
-    color: #fff;
-    padding: 1.5rem 0;
-    font-weight: 350;
-    list-style-type: disc;
-    margin: 0rem 5rem;
-}
-
-
-.skill-container .box-container{
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -515,15 +496,41 @@ h3{
     -ms-flex-align: center;
     align-items: center;
     -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
+    flex-wrap: wrap;
+    /* justify-content: space-between; */
+
+}
+
+.tech-div li {
+    font-size: 2rem;
+    color: #fff;
+    padding: 1.5rem 0;
+    font-weight: 350;
+    list-style-type: disc;
+    margin: 0rem 5rem;
+}
+
+
+.skill-container .box-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
     margin-top: 2rem;
 }
 
 
-.skill-item{
+.skill-item {
     -webkit-box-flex: 1;
     -ms-flex: 1 1 33rem;
-        flex: 1 1 33rem;
+    flex: 1 1 33rem;
     background-color: #111;
     border: 0.1rem solid #fff;
     padding: 4rem 3rem;
@@ -536,22 +543,22 @@ h3{
     margin: 1rem;
 }
 
-.skill-item:hover{
+.skill-item:hover {
     border-color: #00a2e2;
 }
 
-.skill-item i{
+.skill-item i {
     color: #00a2e2;
     font-size: 4rem;
 }
 
-.skill-item h3{
+.skill-item h3 {
     font-size: 2.2rem;
     color: #fff;
     padding: 1.5rem 0;
 }
 
-.skill-item p{
+.skill-item p {
     font-size: 1.6rem;
     color: #999;
     line-height: 1.6;
@@ -560,13 +567,13 @@ h3{
 
 
 /*--------------------- 8- Experience Area CSS (Start) ---------------------*/
-.experience{
+.experience {
     padding-bottom: 0;
 }
 
 
 
-.experience .box-container{
+.experience .box-container {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -574,19 +581,19 @@ h3{
     -ms-flex-pack: center;
     justify-content: center;
     -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
+    flex-wrap: wrap;
 }
 
 .education-container,
-.experience-container{
+.experience-container {
     margin-bottom: 3rem;
     -webkit-box-flex: 1;
     -ms-flex: 1 1 33rem;
-        flex: 1 1 33rem;
+    flex: 1 1 33rem;
 }
 
 .experience-item,
-.education-item{
+.education-item {
     position: relative;
     padding: 0 3rem 2rem 3rem;
     border-left: 0.2rem solid #00a2e2;
@@ -594,22 +601,22 @@ h3{
 }
 
 .experience-item i,
-.education-item i{
+.education-item i {
     position: absolute;
-    top: 0; 
+    top: 0;
     left: -2.5rem;
-    height:5rem;
+    height: 5rem;
     width: 5rem;
     border-radius: 50%;
     line-height: 5rem;
     text-align: center;
     font-size: 2rem;
-    color:#fff;
+    color: #fff;
     background: #00a2e2;
 }
 
 .experience-item .content,
-.education-item .content{
+.education-item .content {
     background: #111;
     border: 0.1rem solid #eee;
     border-radius: 0.5rem;
@@ -617,7 +624,7 @@ h3{
 }
 
 .experience-item span,
-.education-item span{
+.education-item span {
     background: #00a2e2;
     color: #fff;
     padding: 0.5rem 1.5rem;
@@ -626,33 +633,36 @@ h3{
 }
 
 .experience-item h3,
-.education-item h3{
+.education-item h3 {
     font-size: 2.5rem;
     color: #fff;
     padding: 2rem 0;
 }
 
 .experience-item p,
-.education-item p{
+.education-item p {
     color: #999;
     font-size: 1.6rem;
     line-height: 1.5;
 }
-.experience .content > p{
+
+.experience .content>p {
     font-size: 2rem;
     color: #eee;
     line-height: 1.5;
     padding-bottom: 1rem;
 }
-.experience .content > p span{
+
+.experience .content>p span {
     color: #00a2e2;
 }
+
 /*--------------------- 8- Experience Area CSS (End) ---------------------*/
 
 
 
 /*--------------------- 10- Portfolio Area CSS (Start) ---------------------*/
-.controls{
+.controls {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -663,24 +673,24 @@ h3{
     -ms-flex-align: center;
     align-items: center;
     -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
+    flex-wrap: wrap;
     list-style-type: none;
     margin-top: 4rem;
 }
 
-.controls .button{
+.controls .button {
     margin: 0.5rem 1.5rem;
     color: #fff;
     font-size: 2rem;
 }
 
 .controls .button:hover,
-.controls .button.active{
+.controls .button.active {
     cursor: pointer;
     color: #00a2e2;
 }
 
-.portfolio .box-container{
+.portfolio .box-container {
     width: 100%;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -689,21 +699,21 @@ h3{
     -ms-flex-align: center;
     align-items: center;
     -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    padding: 2rem 0; 
+    flex-wrap: wrap;
+    padding: 2rem 0;
 }
 
-.portfolio-item{
+.portfolio-item {
     width: calc(100%/2 - 1.5rem);
     height: 25rem;
     position: relative;
     overflow: hidden;
     margin: 0.5rem;
     -webkit-box-shadow: 0 0.5rem 1rem rgba(255, 255, 255, 0.1);
-            box-shadow: 0 0.5rem 1rem rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0.5rem 1rem rgba(255, 255, 255, 0.1);
 }
 
-.portfolio-item img{
+.portfolio-item img {
     height: 100%;
     width: 100%;
     object-fit: cover;
@@ -713,7 +723,7 @@ h3{
     transition: all 0.5s;
 }
 
-.portfolio-item::before{
+.portfolio-item::before {
     content: '';
     position: absolute;
     top: 0;
@@ -728,10 +738,10 @@ h3{
     transition: all 0.25s;
     transition-delay: 0.25s;
     -webkit-transform: translateY(100%);
-            transform: translateY(100%);
+    transform: translateY(100%);
 }
 
-.portfolio-item .content{
+.portfolio-item .content {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -742,7 +752,7 @@ h3{
     -o-transition: all 0.25s;
     transition: all 0.25s;
     -webkit-transform: translateY(-2rem);
-            transform: translateY(-2rem);
+    transform: translateY(-2rem);
     opacity: 0;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -757,20 +767,20 @@ h3{
     flex-direction: column;
 }
 
-.portfolio-item .content h4{
+.portfolio-item .content h4 {
     font-size: 1.8rem;
     font-weight: bold;
     color: #111;
 }
 
-.portfolio-item .content p{
+.portfolio-item .content p {
     font-size: 2.5rem;
     font-weight: 400;
     color: #fff;
     padding: 1rem 0;
 }
 
-.portfolio-item .content a{
+.portfolio-item .content a {
     height: 4.5rem;
     width: 4.5rem;
     border-radius: 50%;
@@ -784,51 +794,52 @@ h3{
     -ms-flex-align: center;
     align-items: center;
     font-size: 2rem;
-	color: #111;
-	border: 0.1rem solid #111;
+    color: #111;
+    border: 0.1rem solid #111;
 }
 
-.portfolio-item .content a:hover{
+.portfolio-item .content a:hover {
     color: #fff;
     background-color: #111;
 }
 
-.portfolio-item:hover::before{
+.portfolio-item:hover::before {
     -webkit-transform: translateY(0);
-            transform: translateY(0);
+    transform: translateY(0);
     transition-delay: 0s;
 }
 
-.portfolio-item:hover .content{
+.portfolio-item:hover .content {
     opacity: 1;
     transition-delay: 0.3s;
     -webkit-transform: translateY(0);
-            transform: translateY(0);
+    transform: translateY(0);
 }
 
 /*--------------------- 10- Portfolio Area CSS (End) ---------------------*/
 
 
 /*--------------------- 12- Contact Area CSS (Start) ---------------------*/
-.contact .content > p{
+.contact .content>p {
     font-size: 2rem;
     color: #eee;
     line-height: 1.5;
     padding-bottom: 1rem;
 }
-.contact .content > p span{
-    color: #00a2e2;   
+
+.contact .content>p span {
+    color: #00a2e2;
 }
 
 
-.contact .alert{
+.contact .alert {
     font-size: 2rem;
     color: lightgreen;
     border-radius: 0.5rem;
     padding-left: 1rem;
 }
 
-.contact-info{
+.contact-info {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -839,10 +850,10 @@ h3{
     -ms-flex-align: center;
     align-items: center;
     -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
+    flex-wrap: wrap;
 }
 
-.contact-info .info-item{
+.contact-info .info-item {
     width: calc(100%/3 - 1rem);
     height: 20rem;
     background-color: #222;
@@ -861,7 +872,7 @@ h3{
     flex-direction: column;
 }
 
-.contact-info .info-item i{
+.contact-info .info-item i {
     height: 5rem;
     width: 5rem;
     font-size: 2rem;
@@ -879,32 +890,32 @@ h3{
     align-items: center;
 }
 
-.contact-info .info-item:hover i{
+.contact-info .info-item:hover i {
     color: #222;
     background-color: #00a2e2;
 }
 
-.contact-info .info-item h3{
+.contact-info .info-item h3 {
     font-size: 2rem;
     color: #00a2e2;
     padding: 1rem 0rem;
 }
 
-.contact-info .info-item p{
+.contact-info .info-item p {
     font-size: 1.6rem;
     color: #fff;
 }
 
-.contact-info .info-item p.gmail{
+.contact-info .info-item p.gmail {
     text-transform: none;
 }
 
-.contact .form{
+.contact .form {
     width: 50rem;
     margin: 2rem auto;
 }
 
-.contact .form .box{
+.contact .form .box {
     font-size: 1.6rem;
     color: #fff;
     text-transform: none;
@@ -915,16 +926,16 @@ h3{
     margin-bottom: 1rem;
 }
 
-.contact .form .box::placeholder{
+.contact .form .box::placeholder {
     text-transform: capitalize;
     color: #666;
 }
 
-.contact .form .box:focus{
+.contact .form .box:focus {
     border-color: #00a2e2;
 }
 
-.contact .form textarea{
+.contact .form textarea {
     height: 15rem;
     resize: none;
 }
@@ -934,14 +945,14 @@ h3{
 
 
 /*--------------------- 13- Scroll-Top (Start) ---------------------*/
-.scroll-top{
+.scroll-top {
     position: fixed;
     bottom: 1rem;
-    right:1rem;
+    right: 1rem;
     height: 5rem;
     width: 5rem;
     font-size: 3rem;
-    font-weight:lighter;
+    font-weight: lighter;
     background: #111;
     color: #00a2e2;
     border: 0.2rem solid #00a2e2;
@@ -960,12 +971,70 @@ h3{
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-  }
+}
 
-  .scroll-top:hover{
+.scroll-top:hover {
     background: #00a2e2;
-    color:#fff;
-  }
+    color: #fff;
+}
 
-  /*--------------------- 13- Scroll-Top (End) ---------------------*/
+
+/*-------------------collap------------------------*/
+
+.collapsible {
+    margin-top: 5px;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    outline: none;
+    background-color: transparent;
+    font-size: 1.6rem;
+}
+
+.collapsible:hover {
+    background-color: #04648a;
+}
+
+#portfolio .collapsible-active:after {
+    content: "\2212";
+}
+
+.collapsible:after {
+    content: '\002B';
+    color: white;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;  
+}
+
+.drawer {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: transparent;
+    border: solid 1px #00a2e2;
+    background-color: #00a2e2 ;
+}
+
+.drawer p {
+   font-size: 1.5rem;
+   line-height: 200%;
+   color: white;
   
+}
+
+.collapsible-active{
+    background-color: #04648a;
+}
+
+.collapse-h2 {
+    margin-top: 25px;
+    margin-bottom: 10px;
+    color: #fff;
+    font-size: 2.8rem;
+}
+
+/*--------------------- 13- Scroll-Top (End) ---------------------*/
