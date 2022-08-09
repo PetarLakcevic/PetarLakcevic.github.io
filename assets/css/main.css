@@ -816,6 +816,13 @@ h3 {
     transform: translateY(0);
 }
 
+.portfolio .content>p {
+    margin-top: 1rem;
+    font-size: 2rem;
+    color: #eee;
+    line-height: 1.5;
+    padding-bottom: 1rem;
+}
 /*--------------------- 10- Portfolio Area CSS (End) ---------------------*/
 
 

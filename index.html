@@ -123,7 +123,7 @@
                         <h4>Position: <span>Lead developer and co-owner at </span><a href="https://4bees.io">4bees</a>
                         </h4>
                         <h4>Hobbies and interests: <span>Cars, Geography, Markets (stocks, crypto, NFT), Hiking, Tennis,
-                                Bowling, Skydiving</span></h4>
+                                Bowling, Skydiving </span></h4>
                     </div>
                 </div>
                 <a href="#" class="btn">Download CV</a>
@@ -384,14 +384,16 @@
                 these 4 courses are artificial intelligence, sustainable development, learning English with technology,
                 and fake news. </p>
         </div>
-        <button class="collapsible">Benchmarking metaheuristic on the job-shop problem (JSP) with recirculation <span>(2022)</span>
+        <button class="collapsible">Benchmarking metaheuristic on the job-shop problem (JSP) with recirculation
+            <span>(2022)</span>
         </button>
         <div class="drawer">
             <p> Using upgraded shifting bottleneck heuristic for resolving the Job Shop Problem with recirculation.
                 Project was featured
                 on the Symorg 2022 conference. </p>
         </div>
-        <button class="collapsible">Masters Thesis - Statistical approach in forecast modeling <span>(2021)</span></button>
+        <button class="collapsible">Masters Thesis - Statistical approach in forecast modeling
+            <span>(2021)</span></button>
         <div class="drawer">
             <p>Building a Java library that provides users with the ability to define, visualize, and test their own
                 trading patterns on any given tradable financial asset. Pattern definition is done using a set of rules
@@ -399,7 +401,8 @@
                 maximum flexibility. An engine is built that runs the simulation using the time series of the given
                 financial asset (stock, cryptocurrency, etc.), and the results are visualized using JFreeChart.</p>
         </div>
-        <button class="collapsible">Bachelor's Thesis - Programming language recommendation tool <span>(2019)</span> </button>
+        <button class="collapsible">Bachelor's Thesis - Programming language recommendation tool <span>(2019)</span>
+        </button>
         <div class="drawer">
             <p>The first stage of this project was consisted of benchmarking C++, Python, and Java on different
                 algorithms (search, sort, encryption, etc.) and different datasets, as well as many other different
@@ -450,25 +453,13 @@
         </div>
 
 
+        <div class="content">
+            <p>These are some of the most notable/fun projects I have worked on. For a complete list of projects, visit
+                my <a href="https://www.linkedin.com/in/petar-lak%C4%8Devi%C4%87-88009b13b/">linkedin page</a> or
+                contact me using the <a href="#contact">form below.</a></p>
+        </div>
 
-
-
-        <script>
-            var coll = document.getElementsByClassName("collapsible");
-            var i;
-
-            for (i = 0; i < coll.length; i++) {
-                coll[i].addEventListener("click", function () {
-                    this.classList.toggle("collapsible-active");
-                    var drawer = this.nextElementSibling;
-                    if (drawer.style.maxHeight) {
-                        drawer.style.maxHeight = null;
-                    } else {
-                        drawer.style.maxHeight = drawer.scrollHeight + "px";
-                    }
-                });
-            }
-        </script>
+        
 
 
     </section>
@@ -536,8 +527,8 @@
     <script src="assets/js/scroll-spy.js"></script>
     <script src="assets/js/counter-up.js"></script>
     <script src="assets/js/portfolio.js"></script>
-
-
+    <script src="assets/js/email.js"></script>
+    <script src="assets/js/collapsible.js"></script>
 
     <!---------------- Custom Script ---------------->
 
@@ -552,26 +543,6 @@
     </script>
 
     <!-- Contact-Form Script -->
-    <script>
-        jQuery('#contact-form').on('submit', function (e) {
-            jQuery('#msg').html('');
-            jQuery('#submit').html('Please wait');
-            jQuery('#submit').attr('disabled', true);
-            jQuery.ajax({
-                url: 'assets/php/submit.php',
-                type: 'post',
-                data: jQuery('#contact-form').serialize(),
-                success: function (result) {
-                    jQuery('#msg').html(result);
-                    jQuery('#submit').html('Submit');
-                    jQuery('#submit').attr('disabled', false);
-                    jQuery('#contact-form')[0].reset();
-                }
-            });
-            e.preventDefault();
-        });
-    </script>
-
 </body>
 
 </html>
