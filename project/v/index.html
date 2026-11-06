@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="sr-Latn" class="locked"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Vezuv novi identitet</title>
+<style>
+:root {
+  --ink: #17171C; --muted: #85848F; --line: #E2E1E8; --paper: #FFFFFF; --mist: #F3F3F6; --viewer: #0F0E12;
+  --body: 'Segoe UI', Arial, Helvetica, sans-serif; --r: 12px;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 15px/1.4 var(--body); }
+img, svg { max-width: 100%; display: block; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+main { max-width: 1320px; margin: 0 auto; padding: clamp(28px, 4vw, 56px) clamp(16px, 3vw, 40px) clamp(40px, 5vw, 72px); display: grid; gap: clamp(28px, 4vw, 48px); }
+
+.gate { display: none; }
+.locked main { display: none; }
+.locked .gate { display: grid; place-items: center; min-height: 100vh; min-height: 100dvh; padding: 16px; }
+.gate form { display: grid; gap: 12px; width: min(100%, 340px); }
+.gate h1 { font-size: 24px; margin: 0 0 8px; }
+.gate label { display: grid; gap: 6px; font-size: 14.5px; color: #55545F; }
+.gate input { font: inherit; font-size: 16px; color: var(--ink); padding: 10px 12px; border: 1px solid #B9B8C2; border-radius: 8px; background: var(--paper); }
+.gate button { font-size: 15px; padding: 10px 12px; border: 0; border-radius: 8px; background: var(--ink); color: #fff; cursor: pointer; }
+.gate p { margin: 0; font-size: 14px; color: #B3261E; }
+h1 { margin: 0 0 10px; font-size: clamp(28px, 3.2vw, 40px); font-weight: 600; line-height: 1.15; letter-spacing: -.01em; text-wrap: balance; }
+.intro p { margin: 0; max-width: 66ch; font-size: 16px; line-height: 1.5; color: #55545F; text-wrap: pretty; }
+.head { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 14px; margin: 0 0 14px; }
+.no { font-size: 44px; font-weight: 300; line-height: 1; color: #B4B3BE; font-variant-numeric: tabular-nums; }
+h2 { margin: 0; font-size: 20px; font-weight: 600; line-height: 1.3; }
+.head p { margin: 0; font-size: 14.5px; color: var(--muted); }
+.now { display: flex; justify-content: center; padding: clamp(24px, 3vw, 36px); background: var(--paper); border: 1px solid var(--line); border-radius: var(--r); }
+.now img { width: clamp(200px, 22vw, 300px); height: auto; }
+
+.groups { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(12px, 1.6vw, 22px); align-items: start; }
+.group { background: var(--mist); border-radius: 18px; padding: 8px; display: grid; gap: 8px; min-width: 0; }
+h3 { margin: 4px 6px 2px; font-size: 15px; font-weight: 600; line-height: 1.3; }
+
+.tile { position: relative; display: flex; align-items: center; justify-content: center; width: 100%; height: clamp(130px, 13vw, 180px); padding: 22px 34px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--r); cursor: pointer; transition: border-color .15s; }
+.tile:hover { border-color: var(--ink); }
+.tile svg { width: min(100%, 260px); max-height: 76px; }
+.tile span, .n { font-size: 12.5px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.tile span { position: absolute; left: 12px; bottom: 8px; }
+
+.cmp-controls { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; margin-bottom: 14px; }
+.seg { display: inline-flex; flex-wrap: wrap; gap: 2px; background: var(--mist); padding: 3px; border-radius: 10px; }
+.seg button { font-size: 14.5px; border: 0; background: none; padding: 7px 14px; border-radius: 8px; cursor: pointer; }
+.seg button[aria-pressed="true"] { background: var(--ink); color: #fff; }
+
+.ci { min-width: 0; }
+.n { display: block; margin: 2px 4px 4px; }
+.v { display: none; border-radius: var(--r); align-items: center; justify-content: center; min-height: 170px; padding: 18px; }
+.v.m-light { background: var(--paper); border: 1px solid var(--line); }
+.cmp[data-tab="logo"][data-mode="light"] .v-logo.m-light, .cmp[data-tab="logo"][data-mode="dark"] .v-logo.m-dark,
+.cmp[data-tab="mark"][data-mode="light"] .v-mark.m-light, .cmp[data-tab="mark"][data-mode="dark"] .v-mark.m-dark,
+.cmp[data-tab="site"][data-mode="light"] .v-site.m-light, .cmp[data-tab="site"][data-mode="dark"] .v-site.m-dark,
+.cmp[data-tab="icon"] .v-icon, .cmp[data-tab="card"] .v-card, .cmp[data-tab="wall"] .v-wall { display: flex; }
+.cmp[data-tab="icon"] #cmp-mode, .cmp[data-tab="card"] #cmp-mode, .cmp[data-tab="wall"] #cmp-mode { visibility: hidden; }
+.v-logo svg { width: min(78%, 300px); max-height: 100px; }
+.v-mark svg { height: 100px; width: auto; }
+.v-icon { background: var(--paper); border: 1px solid var(--line); gap: 18px; align-items: flex-end; min-height: 0; padding: 26px 18px 20px; }
+.v-icon > div { display: grid; justify-items: center; gap: 6px; font-size: 11.5px; color: var(--muted); }
+.v-card { padding: 0; gap: 8px; min-height: 0; }
+.v-card > div { flex: 1 1 0; min-width: 0; }
+.v-card svg { width: 100%; height: auto; border-radius: 4px; box-shadow: 0 1px 6px rgba(0,0,0,.14); }
+.v-site { padding: 0; }
+.v-wall { padding: 0; min-height: 0; overflow: hidden; background: var(--viewer); }
+.v-wall img { width: 100%; height: auto; }
+.demo { width: 100%; padding: 16px 18px; display: flex; flex-direction: column; min-height: 280px; color: #4F4F62; font-family: var(--tf); }
+.demo .dn { display: flex; align-items: center; justify-content: space-between; gap: 12px; border-bottom: 1px solid #D8D9DE; padding-bottom: 12px; }
+.demo .dn svg { width: var(--nl, 104px); max-height: 34px; }
+.demo .dn span { font-size: 9px; white-space: nowrap; font-family: var(--nf); }
+.demo h4 { font-family: var(--hf); font-weight: var(--hw); font-size: var(--hs); line-height: var(--hl); letter-spacing: var(--hk); margin: 22px 0 8px; }
+.demo p { font-size: 12px; margin: 0 0 12px; max-width: 28ch; }
+.demo .cta { margin-top: auto; padding-top: 10px; font-size: 12px; border-top: 1px solid #7777; }
+.v-site.m-dark .demo { color: #fff; } .v-site.m-dark .demo .dn { border-color: #52515C; }
+
+dialog { border: 0; padding: 0; width: 100vw; height: 100dvh; max-width: none; max-height: none; background: var(--viewer); color: #fff; }
+dialog::backdrop { background: var(--viewer); }
+dialog:focus { outline: none; }
+dialog :focus-visible { outline-color: #fff; }
+.vw { display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr) auto; height: 100%; }
+.vw-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px clamp(12px, 2vw, 22px); }
+.vw-top p { margin: 0; font-size: 15px; font-variant-numeric: tabular-nums; }
+.vw-top div { display: flex; gap: 8px; flex-shrink: 0; }
+.vbtn { font-size: 14px; color: #fff; background: none; border: 1px solid #FFFFFF44; border-radius: 8px; padding: 6px 12px; cursor: pointer; text-decoration: none; }
+.vbtn:hover { background: #fff; color: #111; }
+.vw-main { position: relative; display: flex; align-items: center; justify-content: center; min-height: 0; overflow: hidden; padding: 0 clamp(8px, 5vw, 72px); }
+#vw-page { flex: none; overflow: hidden; border-radius: 4px; background: #fff; }
+.vw-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 46px; height: 64px; font-size: 26px; line-height: 1; color: #fff; background: #26252C; border: 0; border-radius: 10px; cursor: pointer; }
+.vw-nav:hover { background: #3F3E47; } .vw-prev { left: clamp(4px, 1vw, 14px); } .vw-next { right: clamp(4px, 1vw, 14px); }
+.vw-thumbs { display: flex; justify-content: safe center; gap: 6px; padding: 10px; overflow-x: auto; }
+.vw-thumbs button { flex: 0 0 auto; width: 76px; aspect-ratio: 297 / 210; padding: 0; border: 2px solid transparent; border-radius: 4px; overflow: hidden; background: none; cursor: pointer; opacity: .6; }
+.vw-thumbs button[aria-current="true"] { border-color: #fff; opacity: 1; }
+.vw-thumbs img { width: 100%; height: 100%; object-fit: cover; }
+
+@media (max-width: 860px) {
+  .groups { grid-template-columns: minmax(0, 1fr); }
+  .vw-nav { width: 30px; height: 52px; font-size: 22px; }
+  .cmp[data-tab="icon"] #cmp-mode, .cmp[data-tab="card"] #cmp-mode, .cmp[data-tab="wall"] #cmp-mode { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { .tile { transition: none; } }
+
+.hub { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(12px, 1.6vw, 22px); }
+.hub a { display: grid; grid-template-rows: minmax(0, 1fr) auto; min-height: clamp(240px, 38vw, 460px); padding: 8px; background: var(--mist); border-radius: 18px; color: inherit; text-decoration: none; }
+.pic { min-height: 0; overflow: hidden; background: var(--paper); border: 1px solid var(--line); border-radius: var(--r); transition: border-color .15s; }
+.hub a:hover .pic { border-color: var(--ink); }
+.pic img { width: 100%; height: 100%; object-fit: cover; object-position: 60% 50%; }
+.pic-logos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: center; justify-items: center; gap: 4% 8%; padding: 8%; }
+.pic-logos svg { width: 100%; max-height: 44px; }
+.name { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 12px 8px 6px; font-size: 18px; font-weight: 600; }
+.name small { font-size: 13px; font-weight: 400; color: var(--muted); font-variant-numeric: tabular-nums; }
+.back { display: inline-block; margin-bottom: 12px; font-size: 14.5px; color: var(--muted); text-decoration: none; }
+.back:hover { color: var(--ink); }
+@media (max-width: 640px) { .hub { grid-template-columns: minmax(0, 1fr); } .hub a { min-height: 240px; } }
+@media (prefers-reduced-motion: reduce) { .pic { transition: none; } }
+</style><script>const GATE="09ca0d0a209ddaf3f856212aa1c76b4b1e6cb23a7f2e22371e6e68aff2f54ed0";try{if(localStorage.getItem('vezuv-gate')===GATE)document.documentElement.classList.remove('locked')}catch(e){}if(!(window.crypto&&crypto.subtle))document.documentElement.classList.remove('locked');</script></head><body>
+<div class="gate"><form id="gate"><h1>Novi vizuelni identitet za Vezuv</h1><label for="gate-pass">Šifra</label><input id="gate-pass" type="password" autocomplete="off" autocapitalize="off" spellcheck="false" autofocus required><button type="submit">Otvori</button><p id="gate-err" role="alert" hidden>Pogrešna šifra.</p></form></div>
+<main>
+<header class="intro"><h1>Novi vizuelni identitet za Vezuv</h1></header>
+<div class="hub"><a href="logo/"><div class="pic pic-logos"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 329.91 100" role="img" aria-label="Vezuv"><g transform="scale(1.1547)"><polygon points="0.00,0.00 33.00,0.00 50.00,29.44 67.00,0.00 100.00,0.00 74.19,44.70 25.81,44.70" fill="#14100C"/><polygon points="27.31,47.30 72.69,47.30 63.22,63.70 36.78,63.70" fill="#14100C"/><polygon points="38.28,66.30 61.72,66.30 50.00,86.60" fill="#14100C"/><polygon points="42.40,0.00 57.60,0.00 50.00,13.16" fill="#E8420C"/></g><path transform="translate(131.47 56.41)" d="M14.45 0L0.55 -28.9L10.04 -28.9L16.34 -14.83Q16.76 -14.03 17.22 -12.83Q17.68 -11.63 18.19 -10.42Q18.69 -9.2 19.03 -8.23L19.32 -8.23Q19.66 -9.11 20.1 -10.29Q20.54 -11.47 21.04 -12.66Q21.55 -13.86 21.97 -14.83L28.35 -28.9L37.46 -28.9L23.52 0Z M43.94 0L43.94 -28.9L74.01 -28.9L74.01 -22.55L52.51 -22.55L52.51 -17.68L71.32 -17.68L71.32 -11.55L52.51 -11.55L52.51 -6.34L74.35 -6.34L74.35 0Z M80.44 0L80.44 -2.98L98.38 -22.55L81.74 -22.55L81.74 -28.9L112.74 -28.9L112.74 -25.91L94.72 -6.34L113.03 -6.34L113.03 0Z M137.74 0.5Q132.02 0.5 128.29 -1.15Q124.55 -2.81 122.7 -5.98Q120.85 -9.16 120.85 -13.61L120.85 -28.9L129.38 -28.9L129.38 -13.99Q129.38 -10.12 131.56 -7.98Q133.75 -5.84 137.74 -5.84Q141.73 -5.84 143.91 -7.98Q146.09 -10.12 146.09 -13.99L146.09 -28.9L154.66 -28.9L154.66 -13.61Q154.66 -9.16 152.81 -5.98Q150.97 -2.81 147.21 -1.15Q143.45 0.5 137.74 0.5Z M174.91 0L161.01 -28.9L170.5 -28.9L176.8 -14.83Q177.22 -14.03 177.68 -12.83Q178.15 -11.63 178.65 -10.42Q179.15 -9.2 179.49 -8.23L179.78 -8.23Q180.12 -9.11 180.56 -10.29Q181 -11.47 181.51 -12.66Q182.01 -13.86 182.43 -14.83L188.81 -28.9L197.93 -28.9L183.98 0Z" fill="#14100C"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 286 74" role="img" aria-label="Vezuv"><g fill="#ED382D"><path d="M0 7h15l20 32L55 7h15L35 63z"/><path d="M21 7h12l2 4 3-4h12L35 31z"/></g><g fill="#132735"><path d="M83 11h9l11 25 11-25h9l-16 36h-8zM129 11h29v7h-21v7h18v7h-18v8h21v7h-29zM166 11h32v6l-21 23h22v7h-34v-6l21-23h-20zM206 11h8v21q0 9 9 9t9-9V11h8v21q0 16-17 16t-17-16zM246 11h9l11 25 11-25h9l-16 36h-8z"/><path d="M92 58h-5q-4 0-4 5t4 5h6v-6h-5v2h3v2h-4q-2 0-2-3t2-3h5zM105 58h6q4 0 4 3 0 2-3 3l4 4h-3l-4-4h-2v4h-2zm2 2v2h4q2 0 2-1t-2-1zM128 58h2v6q0 2 3 2t3-2v-6h2v6q0 4-5 4t-5-4zM152 58h6q4 0 4 3.5t-4 3.5h-4v3h-2zm2 2v3h4q2 0 2-1.5t-2-1.5zM179 58h3l5 10h-2.5l-1-2.3h-6l-1.1 2.3H174zm1.5 2-2 4h4z"/></g></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 284.9 68" role="img" aria-label="Vezuv"><g transform="translate(2,2) scale(0.64)"><polyline points="20,26 50,80 80,26" fill="none" stroke="#B70019" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/><circle fill="#B98757" cx="50" cy="22" r="10"/></g><g transform="translate(86,16.75) scale(1.15)" fill="none" stroke="#4F4F62" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><polyline points="0,0 12,30 24,0"/><path d="M35.5,15 H62.5 A13.5,13.5 0 1 0 59.3,23.7"/><polyline points="74,0 98,0 74,30 98,30"/><path d="M108,0 V18 A12,12 0 0 0 132,18 M132,0 V30"/><polyline points="142,0 154,30 166,0"/></g></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 291 62" role="img" aria-label="Vezuv"><g transform="translate(4,4) scale(0.64) translate(-10,-6)" fill="none" stroke="#B70019" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"><g stroke-width="1.6" stroke-dasharray="3 3" opacity="0.4"><polyline points="63.76,46.36 68,56 90,6"/><line x1="68" y1="56" x2="56" y2="64"/><polyline points="78,82 58,82 22,6"/><line x1="58" y1="82" x2="46" y2="90"/></g><polygon points="10,14 34,14 56,64 78,14 102,14 66,90 46,90"/><polyline points="10,14 22,6 46,6 34,14"/><polyline points="78,14 90,6 114,6 102,14"/><polyline points="114,6 78,82 66,90"/><line x1="46" y1="6" x2="63.76" y2="46.36"/></g><g transform="translate(93,11)" fill="none" stroke="#4F4F62" stroke-width="1.4" stroke-linejoin="round"><polygon points="0,0 7.5,0 18,30 28.5,0 36,0 22,40 14,40"/><path d="M45,0 H71 V7 H52 V16.5 H68 V23.5 H52 V33 H71 V40 H45 Z"/><path d="M80,0 H110 V6.5 L89.5,33 H110 V40 H80 V33.5 L100.5,7 H80 Z"/><path d="M119,0 H126 V25 A8,8 0 0 0 142,25 V0 H149 V25 A15,15 0 0 1 119,25 Z"/><polygon points="158,0 165.5,0 176,30 186.5,0 194,0 180,40 172,40"/></g></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 295.25 100" role="img" aria-label="Vezuv"><g transform="scale(1.1547)"><polygon points="0.00,0.00 50.00,33.00 50.00,86.60" fill="#7B7A77"/><polygon points="100.00,0.00 50.00,86.60 50.00,33.00" fill="#17171A"/><polygon points="0.00,0.00 100.00,0.00 50.00,33.00" fill="#B98757"/></g><path transform="translate(135.47 54.78)" d="M10.3 0L0.76 -25.56L3.46 -25.56L11.88 -2.66L20.27 -25.56L22.93 -25.56L13.43 0Z M38.24 0L38.24 -25.56L53.98 -25.56L53.98 -23.18L40.69 -23.18L40.69 -13.97L53.54 -13.97L53.54 -11.63L40.69 -11.63L40.69 -2.38L54.26 -2.38L54.26 0Z M69.29 0L69.29 -2.48L83.4 -23.18L69.76 -23.18L69.76 -25.56L86.17 -25.56L86.17 -23.08L72.06 -2.38L86.53 -2.38L86.53 0Z M111.82 0.58Q108.9 0.58 106.78 -0.56Q104.65 -1.69 103.52 -3.83Q102.38 -5.98 102.38 -8.93L102.38 -25.56L104.83 -25.56L104.83 -8.93Q104.83 -5.51 106.65 -3.67Q108.47 -1.84 111.82 -1.84Q115.16 -1.84 116.98 -3.67Q118.8 -5.51 118.8 -8.93L118.8 -25.56L121.25 -25.56L121.25 -8.93Q121.25 -5.98 120.11 -3.83Q118.98 -1.69 116.87 -0.56Q114.77 0.58 111.82 0.58Z M146.35 0L136.81 -25.56L139.51 -25.56L147.94 -2.66L156.32 -25.56L158.99 -25.56L149.48 0Z" fill="#17171A"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 68" role="img" aria-label="Vezuv"><g transform="translate(2,2) scale(0.64)"><path d="M36.08,6.16 A46,46 0 0 0 5.10,40 L94.90,40 A46,46 0 0 0 63.92,6.16 L50,34 Z" fill="#B98757"/><path d="M4.39,44 L95.61,44 A46,46 0 0 1 93.13,66 L6.87,66 A46,46 0 0 1 4.39,44 Z" fill="#B70019"/><path d="M8.58,70 L91.42,70 A46,46 0 0 1 8.58,70 Z" fill="#6E0010"/></g><g transform="translate(82,14)" fill="#4F4F62"><polygon points="0,0 7.5,0 18,30 28.5,0 36,0 22,40 14,40"/><path d="M45,0 H71 V7 H52 V16.5 H68 V23.5 H52 V33 H71 V40 H45 Z"/><path d="M80,0 H110 V6.5 L89.5,33 H110 V40 H80 V33.5 L100.5,7 H80 Z"/><path d="M119,0 H126 V25 A8,8 0 0 0 142,25 V0 H149 V25 A15,15 0 0 1 119,25 Z"/><polygon points="158,0 165.5,0 176,30 186.5,0 194,0 180,40 172,40"/></g></svg></div><div class="name">Logoi<span aria-hidden="true">→</span></div></a><a href="web/"><div class="pic"><img src="web/smelost/assets/poster-D-akBOVk.webp" alt=""></div><div class="name">Primeri sajta<span aria-hidden="true">→</span></div></a></div>
+</main>
+<script>
+document.getElementById('gate').addEventListener('submit',async e=>{e.preventDefault();const i=document.getElementById('gate-pass'),err=document.getElementById('gate-err');
+const buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(i.value.trim().toLowerCase()));const hex=[...new Uint8Array(buf)].map(b=>b.toString(16).padStart(2,'0')).join('');
+if(hex===GATE){try{localStorage.setItem('vezuv-gate',GATE)}catch(x){}document.documentElement.classList.remove('locked');i.value='';err.hidden=true;scrollTo(0,0)}else{err.hidden=false;i.select()}});
+</script>
+</body></html>
