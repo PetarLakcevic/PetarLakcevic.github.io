@@ -113,12 +113,14 @@ dialog :focus-visible { outline-color: #fff; }
 .name small { font-size: 13px; font-weight: 400; color: var(--muted); font-variant-numeric: tabular-nums; }
 .back { display: inline-block; margin-bottom: 12px; font-size: 14.5px; color: var(--muted); text-decoration: none; }
 .back:hover { color: var(--ink); }
-@media (max-width: 640px) { .hub { grid-template-columns: minmax(0, 1fr); } .hub a { min-height: 240px; } }
+.hub-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.hub-3 a { min-height: clamp(220px, 26vw, 340px); }
+@media (max-width: 640px) { .hub, .hub-3 { grid-template-columns: minmax(0, 1fr); } .hub a { min-height: 240px; } }
 @media (prefers-reduced-motion: reduce) { .pic { transition: none; } }
 </style><script>try{if(localStorage.getItem('vezuv-gate')!=="09ca0d0a209ddaf3f856212aa1c76b4b1e6cb23a7f2e22371e6e68aff2f54ed0")location.replace('../')}catch(e){location.replace('../')}</script></head><body>
 <main>
 <header class="intro"><a class="back" href="../">← Nazad</a><h1>Primeri sajta</h1></header>
-<div class="hub"><a href="smelost/"><div class="pic"><img src="smelost/assets/poster-D-akBOVk.webp" alt=""></div><div class="name">Smelost<small>Primer 3</small></div></a></div>
+<div class="hub hub-3"><a href="smelost/"><div class="pic"><img src="smelost/assets/poster-D-akBOVk.webp" alt=""></div><div class="name">Smelost<small>Primer 3</small></div></a><a href="ravan/"><div class="pic"><img src="ravan/cover.jpg" alt=""></div><div class="name">Ravan<small>Primer 4</small></div></a><a href="prosto/"><div class="pic"><img src="prosto/cover.jpg" alt=""></div><div class="name">Prosto<small>Primer 5</small></div></a></div>
 </main>
 
 </body></html>
