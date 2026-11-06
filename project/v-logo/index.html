@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="sr-Latn"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="sr-Latn" class="locked"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Vezuv novi identitet</title>
 <style>
@@ -15,6 +15,15 @@ button { font: inherit; color: inherit; }
 :focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 main { max-width: 1320px; margin: 0 auto; padding: clamp(28px, 4vw, 56px) clamp(16px, 3vw, 40px) clamp(40px, 5vw, 72px); display: grid; gap: clamp(28px, 4vw, 48px); }
 
+.gate { display: none; }
+.locked main { display: none; }
+.locked .gate { display: grid; place-items: center; min-height: 100vh; min-height: 100dvh; padding: 16px; }
+.gate form { display: grid; gap: 12px; width: min(100%, 340px); }
+.gate h1 { font-size: 24px; margin: 0 0 8px; }
+.gate label { display: grid; gap: 6px; font-size: 14.5px; color: #55545F; }
+.gate input { font: inherit; font-size: 16px; color: var(--ink); padding: 10px 12px; border: 1px solid #B9B8C2; border-radius: 8px; background: var(--paper); }
+.gate button { font-size: 15px; padding: 10px 12px; border: 0; border-radius: 8px; background: var(--ink); color: #fff; cursor: pointer; }
+.gate p { margin: 0; font-size: 14px; color: #B3261E; }
 h1 { margin: 0 0 10px; font-size: clamp(28px, 3.2vw, 40px); font-weight: 600; line-height: 1.15; letter-spacing: -.01em; text-wrap: balance; }
 .intro p { margin: 0; max-width: 66ch; font-size: 16px; line-height: 1.5; color: #55545F; text-wrap: pretty; }
 .head { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 14px; margin: 0 0 14px; }
@@ -92,7 +101,8 @@ dialog :focus-visible { outline-color: #fff; }
   .cmp[data-tab="icon"] #cmp-mode, .cmp[data-tab="card"] #cmp-mode, .cmp[data-tab="wall"] #cmp-mode { display: none; }
 }
 @media (prefers-reduced-motion: reduce) { .tile { transition: none; } }
-</style></head><body>
+</style><script>const GATE="09ca0d0a209ddaf3f856212aa1c76b4b1e6cb23a7f2e22371e6e68aff2f54ed0";try{if(localStorage.getItem('vezuv-gate')===GATE)document.documentElement.classList.remove('locked')}catch(e){}if(!(window.crypto&&crypto.subtle))document.documentElement.classList.remove('locked');</script></head><body>
+<div class="gate"><form id="gate"><h1>Novi vizuelni identitet za Vezuv</h1><label for="gate-pass">Šifra</label><input id="gate-pass" type="password" autocomplete="off" autocapitalize="off" spellcheck="false" autofocus required><button type="submit">Otvori</button><p id="gate-err" role="alert" hidden>Pogrešna šifra.</p></form></div>
 <main>
 <header class="intro"><h1>Novi vizuelni identitet za Vezuv</h1><p>Prikazani predlozi nisu finalne verzije logoa. U ovoj fazi biramo opšti dizajn i smer, a izabrani predlog ćemo zatim doraditi do konačnog rešenja.</p></header>
 <section><header class="head"><span class="no" aria-hidden="true">1</span><div><h2>Trenutno stanje</h2><p>Logo koji je trenutno u upotrebi.</p></div></header><div class="group"><div class="now"><img src="assets/vezuv-logo-trenutni.svg" width="166" height="47" alt="Trenutni Vezuv logo"></div></div></section>
@@ -213,5 +223,9 @@ vw.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){e.preventDefault();st
 if(window.claude)claude.use('downloads').then(d=>{if(!d)vwPdf.hidden=true});
 vwPdf.addEventListener('click',async e=>{if(!window.claude)return;e.preventDefault();const d=await claude.use('downloads');if(!d){vwPdf.hidden=true;return}
 try{const blob=await(await fetch(vwPdf.getAttribute('href'))).blob();await d.save({filename:vwPdf.download,data:blob})}catch(err){if(err&&!['declined','rate_limited'].includes(err.code))vwPdf.hidden=true}});
+
+document.getElementById('gate').addEventListener('submit',async e=>{e.preventDefault();const i=document.getElementById('gate-pass'),err=document.getElementById('gate-err');
+const buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(i.value.trim().toLowerCase()));const hex=[...new Uint8Array(buf)].map(b=>b.toString(16).padStart(2,'0')).join('');
+if(hex===GATE){try{localStorage.setItem('vezuv-gate',GATE)}catch(x){}document.documentElement.classList.remove('locked');i.value='';err.hidden=true;scrollTo(0,0)}else{err.hidden=false;i.select()}});
 </script>
 </body></html>
