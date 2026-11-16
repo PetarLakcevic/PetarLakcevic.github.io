@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-4 -4 62 57"><defs><linearGradient id="gold" x1="0%" y1="0%" x2="80%" y2="100%"><stop stop-color="#efd3a9"/><stop offset=".48" stop-color="#b98757"/><stop offset="1" stop-color="#9d653d"/></linearGradient><linearGradient id="red" x1="0%" y1="0%" x2="100%" y2="100%"><stop stop-color="#ec3447"/><stop offset=".45" stop-color="#c90427"/><stop offset="1" stop-color="#790015"/></linearGradient></defs>    <g id="Group_1" data-name="Group 1" transform="translate(0 0)">
+      <path id="Path_1" data-name="Path 1" fill="url(#gold)" d="M251.211,340.814l6.068,10.51,6.067-10.51Z" transform="translate(-230.304 -304.639)"/>
+      <path id="Path_2" data-name="Path 2" fill="url(#gold)" d="M123.046,119.054l6.068,10.509,6.069-10.509Z" transform="translate(-123.046 -119.054)"/>
+      <path id="Path_3" data-name="Path 3" fill="url(#gold)" d="M379.252,119.054l6.068,10.509,6.068-10.509Z" transform="translate(-337.458 -119.054)"/>
+      <path id="Path_4" data-name="Path 4" fill="url(#red)" d="M205.844,131.112l-6.069,10.509H171.93l-6.068-10.509ZM192.813,153.68l6.069-10.509H172.823l6.067,10.509Zm6.069-34.626h-26.1l-6.052,10.509h38.2Z" transform="translate(-158.878 -119.054)"/>
+    </g></svg>
