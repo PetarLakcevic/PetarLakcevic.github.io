@@ -1,0 +1,19 @@
+/* Linkovi ka stranicama koje još nisu napravljene. */
+a.is-soon { cursor: default; }
+.primary-nav a.is-soon, .mobile-nav a.is-soon, .site-footer a.is-soon, .lang a.is-soon { opacity: .5; }
+.primary-nav a.is-soon:hover, .mobile-nav a.is-soon:hover { color: inherit; }
+.primary-nav a.is-soon::after { content: none; }
+
+.soon-toast {
+  position: fixed; left: 50%; bottom: 24px; z-index: 1000;
+  display: grid; gap: 4px; width: max-content; max-width: calc(100vw - 32px);
+  padding: 14px 20px; border-left: 3px solid #B70019;
+  background: #141115; color: #F4EFEA; box-shadow: 0 12px 32px rgba(0, 0, 0, .35);
+  font-size: .9375rem; line-height: 1.4;
+  opacity: 0; pointer-events: none; transform: translate(-50%, 12px);
+  transition: opacity .25s ease, transform .25s ease;
+}
+.soon-toast b { font-weight: 700; }
+.soon-toast span { color: rgba(244, 239, 234, .75); font-size: .875rem; }
+.soon-toast.is-on { opacity: 1; transform: translate(-50%, 0); }
+@media (prefers-reduced-motion: reduce) { .soon-toast { transition: none; } }
