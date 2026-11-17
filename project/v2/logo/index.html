@@ -103,7 +103,7 @@ dialog :focus-visible { outline-color: #fff; }
   .cmp[data-tab="icon"] #cmp-mode, .cmp[data-tab="card"] #cmp-mode, .cmp[data-tab="wall"] #cmp-mode { display: none; }
 }
 @media (prefers-reduced-motion: reduce) { .tile { transition: none; } }
-</style><script>const GATE="09ca0d0a209ddaf3f856212aa1c76b4b1e6cb23a7f2e22371e6e68aff2f54ed0";try{if(localStorage.getItem('vezuv-gate')===GATE)document.documentElement.classList.remove('locked')}catch(e){}if(!(window.crypto&&crypto.subtle))document.documentElement.classList.remove('locked');</script><style>.back{display:inline-block;margin-bottom:12px;font-size:14.5px;color:var(--muted);text-decoration:none}.back:hover{color:var(--ink)}</style></head><body>
+</style><script>const GATE="09ca0d0a209ddaf3f856212aa1c76b4b1e6cb23a7f2e22371e6e68aff2f54ed0";try{if(localStorage.getItem('vezuv-gate-v2')===GATE)document.documentElement.classList.remove('locked')}catch(e){}if(!(window.crypto&&crypto.subtle))document.documentElement.classList.remove('locked');</script><style>.back{display:inline-block;margin-bottom:12px;font-size:14.5px;color:var(--muted);text-decoration:none}.back:hover{color:var(--ink)}</style></head><body>
 <div class="gate"><form id="gate"><h1>Novi vizuelni identitet za Vezuv <span class="ed">v2</span></h1><label for="gate-pass">Šifra</label><input id="gate-pass" type="password" autocomplete="off" autocapitalize="off" spellcheck="false" autofocus required><button type="submit">Otvori</button><p id="gate-err" role="alert" hidden>Pogrešna šifra.</p></form></div>
 <main>
 <a class="back" href="../">← Nazad</a>
@@ -229,6 +229,6 @@ try{const blob=await(await fetch(vwPdf.getAttribute('href'))).blob();await d.sav
 
 document.getElementById('gate').addEventListener('submit',async e=>{e.preventDefault();const i=document.getElementById('gate-pass'),err=document.getElementById('gate-err');
 const buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(i.value.trim().toLowerCase()));const hex=[...new Uint8Array(buf)].map(b=>b.toString(16).padStart(2,'0')).join('');
-if(hex===GATE){try{localStorage.setItem('vezuv-gate',GATE)}catch(x){}document.documentElement.classList.remove('locked');i.value='';err.hidden=true;scrollTo(0,0)}else{err.hidden=false;i.select()}});
+if(hex===GATE){try{localStorage.setItem('vezuv-gate-v2',GATE)}catch(x){}document.documentElement.classList.remove('locked');i.value='';err.hidden=true;scrollTo(0,0)}else{err.hidden=false;i.select()}});
 </script>
 </body></html>
