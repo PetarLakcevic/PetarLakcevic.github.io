@@ -28,10 +28,10 @@ document.querySelectorAll('[data-lang]').forEach(button => button.addEventListen
   document.querySelector('.menu-toggle').setAttribute('aria-label', language === 'sr' ? 'Otvori meni' : 'Open menu');
   document.querySelector('.close-dialog').setAttribute('aria-label', language === 'sr' ? 'Zatvori' : 'Close');
   document.querySelector('.back-top').setAttribute('aria-label', language === 'sr' ? 'Nazad na vrh' : 'Back to top');
-  document.querySelector('.brand').setAttribute('aria-label', language === 'sr' ? 'Vezuv — početna' : 'Vezuv — home');
+  document.querySelector('.brand').setAttribute('aria-label', language === 'sr' ? 'Vezuv, početna' : 'Vezuv, home');
   document.querySelector('.navrow nav').setAttribute('aria-label', language === 'sr' ? 'Glavna navigacija' : 'Main navigation');
   document.querySelector('#mobile-menu').setAttribute('aria-label', language === 'sr' ? 'Mobilna navigacija' : 'Mobile navigation');
-  document.title = language === 'sr' ? 'Vezuv — Snaga iskustva. Energija budućnosti.' : 'Vezuv — Built on experience. Driven by tomorrow.';
+  document.title = language === 'sr' ? 'Vezuv | Snaga iskustva. Energija budućnosti.' : 'Vezuv | Built on experience. Driven by tomorrow.';
   if(activeDialog) renderDialog();
 }));
 document.querySelectorAll('[data-dialog]').forEach(button => button.addEventListener('click', () => {

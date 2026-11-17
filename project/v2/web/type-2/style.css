@@ -302,7 +302,7 @@ body:has(dialog[open]){overflow:hidden}
   *,*:before,*:after{animation:none!important;transition:none!important}
 }
 
-/* Corporate Volcano / Vezuv GPT — shared brand and interaction rules. */
+/* Corporate Volcano / Vezuv GPT: shared brand and interaction rules. */
 :root{
   --red:#B70019;--wine:#9E0016;--gold:#B98757;--bronze-light:#D9B68D;
   --ink:#27242A;--dark:var(--ink);--paper:#F6F3EF;--sand:#EDE7E0;--stone:var(--sand);
@@ -339,7 +339,7 @@ h2{font-size:var(--type-section);font-weight:600;line-height:1.08;letter-spacing
 .news-image{width:100%}
 .news-meta{width:100%}
 .news-card .read-story{margin-top:auto;padding-top:20px}
-.emblem{width:min(58%,420px);height:auto;transform:rotate(-9deg);filter:drop-shadow(16px 28px 14px rgba(74,0,11,.45))}
+.emblem{width:min(58%,420px);height:auto;transform:rotate(-9deg);filter:drop-shadow(0 1px 1.5px rgba(52,0,8,.18)) drop-shadow(16px 28px 16px rgba(66,0,10,.5))}
 .careers .eyebrow,.careers .section-no{color:var(--paper)}
 .careers .section-no{border-color:rgba(246,243,239,.4)}
 .button:focus-visible{outline:3px solid var(--gold);outline-offset:4px}
