@@ -2,6 +2,7 @@
 <html lang="sr-Latn"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Vezuv novi identitet · v2</title>
+<link rel="icon" href="../favicon-32.png" sizes="32x32" type="image/png"><link rel="icon" href="../favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <style>
 :root {
   --ink: #17171C; --muted: #85848F; --line: #E2E1E8; --paper: #FFFFFF; --mist: #F3F3F6; --viewer: #0F0E12;
@@ -131,7 +132,7 @@ dialog :focus-visible { outline-color: #fff; }
 .gate .ed { font-size: .62em; vertical-align: .14em; }
 .top p { text-align: right; }
 .soft { position: absolute; inset: -6%; filter: blur(var(--blur, 10px)) saturate(1.08); transition: filter .7s cubic-bezier(.2, .7, .2, 1), transform .7s cubic-bezier(.2, .7, .2, 1); }
-.hub a:hover .soft { --blur: 4px; transform: scale(.985); }
+.hub a:hover .soft, .hub a:focus-visible .soft { --blur: 0px; transform: none; }
 .pic-v2 { position: relative; background: #ECEBF0; }
 .pic-v2::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(255,255,255,0) 55%, rgba(236,235,240,.55)); pointer-events: none; }
 .pic-marks .soft { display: flex; align-items: center; justify-content: center; gap: 5%; padding: 0 10%; }
@@ -148,6 +149,7 @@ dialog :focus-visible { outline-color: #fff; }
   .hub, .hub-3 { grid-template-columns: minmax(0, 1fr); }
   .pic-logos { aspect-ratio: 4 / 3; }
   .home { align-content: start; }
+  .top p { text-align: left; }
 }
 @media (prefers-reduced-motion: reduce) { .pic, .pic img, .arr, .soft { transition: none; } }
 </style><script>try{if(localStorage.getItem('vezuv-gate')!=="09ca0d0a209ddaf3f856212aa1c76b4b1e6cb23a7f2e22371e6e68aff2f54ed0")location.replace('../')}catch(e){location.replace('../')}</script></head><body>
