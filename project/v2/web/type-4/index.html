@@ -1,311 +1,172 @@
 <!doctype html>
-<html lang="sr-Latn-ME" data-root="./">
+<html lang="sr-Latn-ME">
 <head><script>try{if(localStorage.getItem('vezuv-gate-v2')!=="09ca0d0a209ddaf3f856212aa1c76b4b1e6cb23a7f2e22371e6e68aff2f54ed0")location.replace('../../')}catch(e){location.replace('../../')}</script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#101111">
+  <meta name="description" content="Vezuv Grupa iz Podgorice. Priče o kompaniji iza brenda Volcano, sportu i zajednici u Crnoj Gori. Konceptualni prikaz.">
   <title>VEZUV GRUPA | TYPE 4</title>
-  <link rel="icon" href="./logos/favicon.svg">
-  <!-- Fallback: if JS module fails to load, remove curtain after 9s -->
-  <script>
-    setTimeout(function() {
-      var b = document.body;
-      var c = document.querySelector('.loading');
-      if (b && b.classList.contains('is-loading')) {
-        b.classList.remove('is-loading');
-        if (c) c.style.display = 'none';
-      }
-    }, 9000);
-  </script>
-  <noscript><style>.loading{display:none}body.is-loading>*{visibility:visible}.rv-nav.is-intro,.hero-card,.hero-arrow{opacity:1;transform:none}</style></noscript>
-  <script type="module" crossorigin src="./assets/main-DDsEI_pd.js"></script>
-  <link rel="modulepreload" crossorigin href="./assets/root-BXW9ZRfN.js">
-  <link rel="stylesheet" crossorigin href="./assets/main-DqTFk4tg.css">
+  <link rel="icon" href="assets/znak.svg" type="image/svg+xml">
+  <link rel="preload" as="image" href="assets/vezuv-reljef.webp">
+  <link rel="preload" as="font" type="font/woff2" href="assets/inter-latin.woff2" crossorigin>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+  <script src="relief.js" defer></script>
 </head>
-<body class="is-loading">
-
-  <!-- ══════════════════════════════════════════════════
-       INTRO CURTAIN
-       ══════════════════════════════════════════════════ -->
-  <div class="loading" aria-hidden="true" role="presentation">
-    <div class="loading-inner">
-      <!-- SVG logo built by intro.js at runtime -->
-    </div>
-  </div>
-
-  <!-- Skip to content -->
-  <a class="skip-link" href="#main">Preskoči na sadržaj</a>
-
-  <!-- ══════════════════════════════════════════════════
-       HEADER
-       ══════════════════════════════════════════════════ -->
-  <header class="rv-nav is-intro" data-nav>
-    <a class="rv-nav__logo" href="./" aria-label="Vezuv Grupa">
-      <img src="./logos/horizontal.svg" alt="Vezuv" width="168" height="34">
+<body>
+  <a class="skip" href="#grupa">Pređi na sadržaj</a>
+  <header class="masthead home-header">
+    <a class="logo" href="#vrh" aria-label="Vezuv Grupa, početna">
+      <img src="assets/vezuv.svg" alt="Vezuv" width="110" height="34">
     </a>
-    <div class="rv-nav__right">
-      <a class="rv-nav__chip" href="#odgovorno-igranje" data-responsible="true"><b>18+</b> Igraj odgovorno</a>
-      <button class="rv-nav__toggle" data-hamburger aria-label="Otvori meni" aria-expanded="false" aria-controls="rv-nav-menu">
-        <span class="rv-nav__meni">Meni</span><span class="rv-nav__close">Zatvori</span>
-      </button>
-    </div>
-    <nav class="rv-menu" data-nav-menu id="rv-nav-menu" data-open="false" aria-label="Glavna navigacija">
-      <div class="rv-menu__inner">
-        <ol class="rv-menu__list" role="list">
-          <li><a class="rv-menu__link" data-nav-link href="#o-grupi" data-target="#o-grupi"><span>01</span>O grupi</a></li>
-          <li><a class="rv-menu__link" data-nav-link href="#poslovanje" data-target="#poslovanje"><span>02</span>Poslovanje</a></li>
-          <li><a class="rv-menu__link" data-nav-link href="#volcano-bet" data-target="#volcano-bet"><span>03</span>Volcano bet</a></li>
-          <li><a class="rv-menu__link" data-nav-link href="#trzista" data-target="#trzista"><span>04</span>Tržišta</a></li>
-          <li><a class="rv-menu__link" data-nav-link href="#odgovorno-igranje" data-target="#odgovorno-igranje"><span>05</span>Odgovorno igranje</a></li>
-          <li><a class="rv-menu__link" data-nav-link href="#upravljanje" data-target="#upravljanje"><span>06</span>Korporativno upravljanje</a></li>
-          <li><a class="rv-menu__link" data-nav-link href="#menadzment" data-target="#menadzment"><span>07</span>Menadžment</a></li>
-        </ol>
-        <div class="rv-menu__foot">
-          <p>Trg nezavisnosti bb<br>81000 Podgorica</p>
-          <p>+382 20 210 147</p>
-        </div>
-      </div>
+    <nav class="desktop-nav" aria-label="Glavna navigacija">
+      <a href="#grupa">O grupi</a>
+      <a href="#price">Priče</a>
+      <a href="#volcano">Volcano</a>
+      <a href="#kontakt" data-contact>Kontakt</a>
     </nav>
+    <button class="menu-toggle ui" type="button" aria-controls="meni" aria-haspopup="dialog" aria-expanded="false" hidden>Meni <i class="menu-icon" aria-hidden="true"></i></button>
   </header>
 
-  <main id="main">
+  <main>
+    <div class="opening-art" id="vrh">
+      <img src="assets/vezuv-reljef.webp" alt="Silueta Vezuva sa nižim grebenom i kraterom, oblikovana od mat grafitnih kuglica." width="2035" height="773" fetchpriority="high">
+    </div>
 
-    <div class="hero-wrap">
-  <!-- ══════════════════════════════════════════════════
-       HERO: parametric word VEZUV
-       ══════════════════════════════════════════════════ -->
-    <section class="hero" id="hero" aria-label="Vezuv Grupa heroj">
-      <!-- SVG letters injected by hero.js -->
-      <svg class="hero-svg" id="hero-svg" aria-hidden="true" focusable="false"></svg>
-      <div class="hero-bottom">
-        <div class="hero-bottom__left">
-          <h1 class="hero-title" data-text-reveal>Najveći koncesionar u oblasti priređivanja igara na sreću u Crnoj Gori.</h1>
-        </div>
-        <div class="hero-card" id="hero-card" aria-label="Ključne cifre">
-          <div class="hero-card__slides" id="hero-card-slides">
-            <div class="hero-card__slide" data-slide="0">
-              <span class="hero-card__num">967</span>
-              <span class="hero-card__label">Zaposlenih</span>
-            </div>
-            <div class="hero-card__slide" data-slide="1">
-              <span class="hero-card__num">450</span>
-              <span class="hero-card__label">Prodajnih mjesta</span>
-            </div>
-            <div class="hero-card__slide" data-slide="2">
-              <span class="hero-card__num">34</span>
-              <span class="hero-card__label">Lokala</span>
-            </div>
-          </div>
-          <div class="hero-card__ticks" id="hero-card-ticks" aria-hidden="true">
-            <span></span><span></span><span></span>
-          </div>
-        </div>
-        <a class="hero-arrow" href="#o-grupi" aria-label="Pomjeri na sadržaj">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M12 4v16M5 15l7 7 7-7" stroke="currentColor" stroke-width="2"/>
-          </svg>
-        </a>
+    <section class="intro section-frame" id="grupa" aria-labelledby="naslov">
+      <p class="eyebrow">O grupi</p>
+      <h1 class="statement" id="naslov"><span class="quiet">Iza brenda Volcano</span><br>stoji Vezuv.</h1>
+      <div class="intro-text">
+        <p>Vezuv je osnovan u Podgorici 1999. godine. Pod imenom Volcano razvijamo mrežu sportskih kladionica, automat klubova i online platformu u Crnoj Gori.</p>
+        <p>Kroz Sport Support i Fondaciju Volumen podržavamo domaće sportiste, zdravstvene ustanove i udruženja koja rade sa djecom i mladima.</p>
+        <a class="line-link" href="https://vezuv.me/about-us">Više o kompaniji</a>
       </div>
     </section>
 
-    <!-- ── O GRUPI ───────────────────────────────────── -->
-    <section id="o-grupi" class="rv-section rv-section--white" data-section>
-      <div class="rv-wrap">
-        <div class="rv-ogrupi">
-          <p class="rv-label">O grupi</p>
-          <p class="rv-statement" data-text-reveal>Od prvog dana gradimo na povjerenju, odgovornosti i zajedničkom napretku.</p>
-          <div class="rv-ogrupi__cols">
-            <div>
-              <p class="rv-label">Vizija</p>
-              <p>Pratiti svijet koji se brzo razvija i sačuvati ono vrijedno: ljude, poštenje, povjerenje i kapital.</p>
-            </div>
-            <div>
-              <p class="rv-label">Misija</p>
-              <p>Uspješno trajanje. Da nas ne definišu samo brojke. Gradimo stalno, učimo i dalje, ima nas sve više.</p>
-            </div>
-          </div>
-          <dl class="rv-ogrupi__meta">
-            <div><dt>Osnovano</dt><dd>1999.</dd></div>
-            <div><dt>Sjedište</dt><dd>Podgorica</dd></div>
-            <div><dt>Fiskalni doprinos</dt><dd>Podatak u pripremi</dd></div>
-          </dl>
+    <section class="stories" id="price" aria-labelledby="price-naslov">
+      <div class="section-frame strip-head">
+        <p class="eyebrow">Izabrane priče</p>
+        <div class="rail-controls" hidden>
+          <span class="rail-count" aria-live="polite" aria-atomic="true">01 / 03</span>
+          <button class="rail-step" type="button" data-step="-1" aria-label="Prethodna priča" aria-controls="price-traka"><span aria-hidden="true">←</span></button>
+          <button class="rail-step" type="button" data-step="1" aria-label="Sljedeća priča" aria-controls="price-traka"><span aria-hidden="true">→</span></button>
         </div>
       </div>
-      <div class="rv-values-row">
-        <div class="rv-value rv-value--red">
-          <p class="rv-value__name">Inicijativa</p>
-          <p class="rv-value__desc">Pomjeramo granice, preispitujemo postojeće stanje, tražimo mogućnosti.</p>
-        </div>
-        <div class="rv-value rv-value--ink">
-          <p class="rv-value__name">Hrabrost</p>
-          <p class="rv-value__desc">Donosimo odluke, prihvatamo rizike, preuzimamo odgovornost.</p>
-        </div>
-        <div class="rv-value rv-value--copper">
-          <p class="rv-value__name">Uzajamnost</p>
-          <p class="rv-value__desc">Tim je iznad pojedinca, rezultat je zajednički.</p>
-        </div>
+      <h2 class="news-title" id="price-naslov">
+        <span>Iz svijeta Vezuva</span>
+        <span class="title-echo" aria-hidden="true"><i>·</i> Iz svijeta Vezuva <i>·</i> Iz svijeta Vezuva</span>
+      </h2>
+      <ul class="story-rail" id="price-traka" aria-label="Priče o sportu, zajednici i zdravstvu" tabindex="0">
+        <li>
+          <a class="story-card" href="price/filip-kuncer.html">
+            <div class="story-photo"><img src="assets/filip.webp" width="1024" height="731" alt="Filip Kunčer na svečanosti povodom završetka trkačke sezone" decoding="async"></div>
+            <div class="story-meta"><span>Sport</span><time datetime="2025-11-27">27.11.2025.</time></div>
+            <h3>Sezona Filipa Kunčera</h3>
+          </a>
+        </li>
+        <li>
+          <a class="story-card" href="price/fondacija-volumen.html">
+            <div class="story-photo"><img src="assets/zajednica.webp" width="800" height="533" alt="Predstavnici udruženja i Crvenog krsta na dodjeli donacija Fondacije Volumen" decoding="async"></div>
+            <div class="story-meta"><span>Zajednica</span><time datetime="2025-12-11">11.12.2025.</time></div>
+            <h3>Podrška za šest organizacija</h3>
+          </a>
+        </li>
+        <li>
+          <a class="story-card" href="price/neonatologija.html">
+            <div class="story-photo"><img src="assets/neonatologija.webp" width="1400" height="933" alt="Ljubičasti baloni uz obilježavanje Dana prijevremeno rođenih beba" decoding="async"></div>
+            <div class="story-meta"><span>Zdravstvo</span><time datetime="2025-11-17">17.11.2025.</time></div>
+            <h3>Uz Centar za neonatologiju</h3>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <section class="business section-frame" id="volcano" aria-labelledby="volcano-naslov">
+      <div class="business-title">
+        <p class="eyebrow">Naš brend</p>
+        <h2 id="volcano-naslov">Volcano<span class="accent">.</span></h2>
+        <p>Četiri dijela poslovanja pod jednim imenom.</p>
+      </div>
+      <div class="formats">
+        <details name="formati" open>
+          <summary>Volcano Betting<i class="toggle-icon" aria-hidden="true"></i></summary>
+          <div class="format-text"><p>Mreža sportskih kladionica obuhvata 278 poslovnica širom Crne Gore, uz samouslužne terminale.</p></div>
+        </details>
+        <details name="formati">
+          <summary>Casino Volcano<i class="toggle-icon" aria-hidden="true"></i></summary>
+          <div class="format-text"><p>Pod imenom Casino Volcano posluje 19 automat klubova u Crnoj Gori.</p></div>
+        </details>
+        <details name="formati">
+          <summary>Premium Slot Club<i class="toggle-icon" aria-hidden="true"></i></summary>
+          <div class="format-text"><p>Dva premium kluba na primorju nalaze se u Porto Palaceu u Tivtu i u Budvi.</p></div>
+        </details>
+        <details name="formati">
+          <summary>Volcano Online<i class="toggle-icon" aria-hidden="true"></i></summary>
+          <div class="format-text"><p>Volcano Superior je digitalna platforma brenda za sportsko klađenje i kazino igre.</p></div>
+        </details>
+        <p class="age-note"><span>18+</span> Igre na sreću namijenjene su punoljetnima. Igrajte odgovorno.</p>
       </div>
     </section>
 
-    </div><!-- .hero-wrap -->
-
-    <!-- ── POSLOVANJE ────────────────────────────────── -->
-    <section id="poslovanje" class="rv-section rv-section--ink" data-section>
-      <div class="rv-wrap">
-        <p class="rv-label rv-label--light">Poslovanje</p>
-      </div>
-      <div class="rv-figures">
-        <div class="rv-fig">
-          <span class="rv-fig__num" data-counter data-target="967">967</span>
-          <span class="rv-fig__label">Zaposlenih</span>
-        </div>
-        <div class="rv-fig">
-          <span class="rv-fig__num" data-counter data-target="450">450</span>
-          <span class="rv-fig__label">Prodajnih mjesta</span>
-        </div>
-        <div class="rv-fig">
-          <span class="rv-fig__num" data-counter data-target="34">34</span>
-          <span class="rv-fig__label">Lokala</span>
-        </div>
-        <div class="rv-fig">
-          <span class="rv-fig__num" data-counter data-target="680">680</span>
-          <span class="rv-fig__label">Terminala</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── VOLCANO BET ───────────────────────────────── -->
-    <section id="volcano-bet" class="rv-section rv-section--white" data-section>
-      <div class="rv-marquee-band" aria-hidden="true">
-        <div class="rv-marquee" id="rv-marquee">
-          <div class="rv-marquee__track" id="rv-marquee-track">
-            <span>Volcano Betting</span>
-            <span>Casino Volcano</span>
-            <span>Volcano Premium Slot Club</span>
-            <span>Volcano Online</span>
-            <span>Volcano Betting</span>
-            <span>Casino Volcano</span>
-            <span>Volcano Premium Slot Club</span>
-            <span>Volcano Online</span>
-          </div>
-        </div>
-      </div>
-      <div class="rv-brands" id="rv-brands">
-        <!-- Rendered by sections.js -->
-      </div>
-    </section>
-
-    <!-- ── TRŽIŠTA ────────────────────────────────────── -->
-    <section id="trzista" class="rv-section rv-section--grey" data-section>
-      <div class="rv-trzista">
-        <div class="rv-trzista__map" id="rv-map" aria-hidden="true">
-          <!-- SVG map rendered by sections.js -->
-        </div>
-        <div class="rv-trzista__list">
-          <h2 class="rv-label">Tržišta</h2>
-          <div class="rv-trzista__item rv-trzista__item--primary">
-            <p class="rv-trzista__name">Crna Gora</p>
-            <p class="rv-trzista__addr">Trg nezavisnosti bb, 81000 Podgorica</p>
-            <p class="rv-trzista__phone">+382 20 210 147</p>
-          </div>
-          <div class="rv-trzista__item">
-            <p class="rv-trzista__name">Srbija</p>
-          </div>
-          <div class="rv-trzista__item">
-            <p class="rv-trzista__name">Republika Srpska</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── ODGOVORNO IGRANJE ──────────────────────────── -->
-    <section id="odgovorno-igranje" class="rv-section rv-section--red" data-section>
-      <div class="rv-wrap">
-        <div class="rv-responsible">
-          <div class="rv-responsible__badge">18+</div>
-          <div class="rv-responsible__content">
-            <h2 class="rv-responsible__headline" data-text-reveal>Odgovorno igranje</h2>
-            <div class="rv-responsible__grid">
-              <div class="rv-responsible__item">
-                <p class="rv-responsible__name">Alati za igrače</p>
-                <p class="rv-responsible__desc">Postavljanje limita, samoisključenje, podsjetnici.</p>
-              </div>
-              <div class="rv-responsible__item">
-                <p class="rv-responsible__name">Zaštita maloljetnih</p>
-                <p class="rv-responsible__desc">Stroga provjera godina. Nulta tolerancija.</p>
-              </div>
-              <div class="rv-responsible__item">
-                <p class="rv-responsible__name">Pomoć i savjetovališta</p>
-                <p class="rv-responsible__desc">Podrška za one kojima je potrebna.</p>
-              </div>
-              <div class="rv-responsible__item">
-                <p class="rv-responsible__name">Test samoprocjene</p>
-                <p class="rv-responsible__desc">Prepoznaj znakove. Na vrijeme.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── KORPORATIVNO UPRAVLJANJE ───────────────────── -->
-    <section id="upravljanje" class="rv-section rv-section--white" data-section>
-      <div class="rv-wrap">
-        <h2 class="rv-heading" data-text-reveal>Korporativno upravljanje</h2>
-        <div class="rv-gov-grid">
-          <div class="rv-gov-item">
-            <h3>Upravljačka struktura</h3>
-            <p>Jasno definisana hijerarhija i odgovornost na svim nivoima organizacije.</p>
-          </div>
-          <div class="rv-gov-item">
-            <h3>Usklađenost i AML</h3>
-            <p>Potpuna usklađenost sa regulatornim zahtjevima i procedurama sprečavanja pranja novca.</p>
-          </div>
-          <div class="rv-gov-item">
-            <h3>Licence</h3>
-            <p>Poslujemo u skladu sa svim važećim licencama za priređivanje igara na sreću.</p>
-          </div>
-          <div class="rv-gov-item">
-            <h3>Prijava nepravilnosti</h3>
-            <p>Transparentni kanal za prijavljivanje nepravilnosti i etičkih prekršaja.</p>
-          </div>
-        </div>
-
-        <!-- Menadžment -->
-        <h2 id="menadzment" class="rv-heading rv-heading--sec" data-text-reveal>Menadžment kompanije</h2>
-        <div class="rv-team-grid" id="rv-team-grid">
-          <!-- Rendered by sections.js -->
-        </div>
-
-        <!-- Where the demo ends -->
-        <h2 class="rv-heading rv-heading--sec" data-text-reveal>Idejni pravac</h2>
-        <p class="rv-note" role="note">Ovo nije verzija sajta, već ideja. Ako vam se sviđa, idemo u ovom pravcu.</p>
-      </div>
-    </section>
-
+    <div class="brand-relief" id="znak">
+      <picture>
+        <source media="(max-width: 640px)" srcset="assets/vezuv-znak-uski.webp" width="1080" height="460">
+        <img src="assets/vezuv-znak-reljef.webp" width="2560" height="400" loading="lazy" decoding="async" alt="Kontura Vezuvovog znaka od izdignutih grafitnih kuglica u zidu od kuglica, sa narandžastim vrhom.">
+      </picture>
+      <canvas class="relief-live" aria-hidden="true"></canvas>
+    </div>
   </main>
 
-  <!-- ══════════════════════════════════════════════════
-       FOOTER
-       ══════════════════════════════════════════════════ -->
-  <footer class="rv-footer rv-section--ink">
-    <div class="rv-wrap">
-      <div class="rv-footer__links">
-        <a href="#">Politika privatnosti</a>
-        <a href="#">Politika kolačića</a>
-        <a href="#">Uslovi korišćenja</a>
-        <a href="#">Impresum</a>
+  <footer class="footer section-frame" id="kontakt" aria-labelledby="kontakt-naslov">
+    <div class="footer-grid">
+      <svg class="footer-map" viewBox="0 0 870 1024" aria-hidden="true" focusable="false"><path d="M347 18 347 20 347 23 347 27 347 31 348 37 349 42 350 48 352 53 355 58 359 64 364 69 372 74 380 80 390 86 401 94 413 104 426 115 439 128 453 143 468 160 483 180 496 196 507 209 516 218 523 224 530 229 537 233 543 235 549 237 557 240 566 244 577 251 589 259 600 266 611 271 620 274 629 276 638 278 647 281 656 283 665 285 679 291 696 301 717 314 742 331 763 345 781 356 796 364 807 369 817 375 827 380 835 386 843 393 849 399 854 405 856 412 857 418 858 423 858 428 858 432 858 436 854 440 846 444 836 448 821 453 810 458 802 463 796 469 794 476 790 481 785 484 779 485 772 484 765 483 758 483 750 483 741 483 734 484 729 486 724 489 722 493 721 498 721 504 724 510 728 517 731 524 734 532 738 540 740 548 742 557 742 567 741 577 739 588 737 597 736 604 735 607 734 609 733 610 732 610 730 610 728 610 723 612 716 614 707 619 695 626 684 632 674 636 664 640 656 643 647 646 639 648 630 650 623 652 616 652 610 651 605 649 601 646 598 643 595 639 593 635 591 631 590 625 589 616 589 606 589 594 589 583 588 575 588 569 586 565 584 561 582 558 580 555 577 553 574 553 570 553 565 555 560 558 554 562 548 568 542 576 536 586 529 596 523 606 517 617 512 628 505 639 498 650 490 662 481 673 472 685 464 696 457 707 449 718 442 730 434 743 427 756 419 770 412 784 405 796 399 808 394 820 391 830 391 839 394 847 400 854 405 861 409 869 413 877 416 886 419 895 420 903 420 910 419 917 418 923 418 928 419 933 420 937 420 943 420 951 419 961 417 973 416 984 415 993 414 1002 414 1009 409 1012 400 1010 387 1003 370 991 355 977 343 963 333 947 326 930 315 911 298 888 278 862 252 834 226 808 199 784 171 762 142 742 120 727 105 716 96 709 95 706 94 702 94 699 95 695 97 692 98 688 100 685 101 682 102 679 102 676 100 675 96 674 90 674 84 674 79 675 74 677 70 679 66 681 62 682 58 682 54 681 50 679 45 675 41 669 36 662 32 655 28 648 23 642 19 635 16 629 13 623 12 618 12 612 12 608 13 604 15 602 17 602 19 601 21 599 24 597 27 595 30 592 35 588 40 583 46 576 51 571 55 566 57 562 58 559 59 555 60 551 60 547 60 542 57 534 53 524 46 511 38 496 31 481 26 469 23 457 22 447 21 435 19 420 18 404 17 385 16 370 17 358 18 350 20 346 22 342 24 338 27 336 30 334 36 332 45 329 57 327 72 325 83 319 91 311 94 299 94 284 94 272 95 263 95 256 96 252 98 247 100 242 102 236 105 230 108 224 110 218 112 212 114 207 118 201 123 194 130 186 138 178 147 170 157 161 167 152 178 143 188 136 196 131 203 128 208 128 213 128 217 129 222 130 226 131 230 134 235 139 240 145 245 153 250 159 255 163 260 164 265 163 270 160 273 154 275 146 276 137 275 126 272 115 267 103 260 90 254 78 249 68 244 58 240 50 238 43 237 36 237 31 238 26 239 23 241 19 244 16 246 14 250 12 254 12 259 12 265 14 271 16 277 18 283 20 288 22 294 23 298 24 302 23 306 21 310 20 315 19 320 17 326 16 331 15 335 15 339 15 343 15 345 16 346 17Z"/><circle class="map-pin" cx="376" cy="682" r="7"/></svg>
+      <div class="footer-contact">
+        <h2 class="eyebrow" id="kontakt-naslov">Kontakt</h2>
+        <p class="footer-address"><span>Trg nezavisnosti bb</span><br><span class="quiet">Podgorica</span></p>
+        <a class="footer-write" href="https://vezuv.me/contact"><span>Pošaljite upit</span> <i aria-hidden="true">↗</i></a>
       </div>
+      <div class="footer-office">
+        <h3 class="eyebrow">Sjedište</h3>
+        <address>Vezuv d.o.o.<br>81000 Podgorica, <span class="country">Crna Gora</span><br><a class="footer-tel" href="tel:+38220210147">+382 20 210 147</a></address>
+      </div>
+      <nav class="footer-links" aria-label="Vezuv Grupa">
+        <a href="https://vezuv.me/career">Karijera <span aria-hidden="true">↗</span></a>
+        <a href="https://vezuv.me/media">Mediji <span aria-hidden="true">↗</span></a>
+      </nav>
     </div>
-    <div class="rv-footer__word" id="rv-footer-word" role="img" aria-label="Vezuv">
-      <!-- Parametric word SVG injected by sections.js -->
-    </div>
-    <div class="rv-wrap rv-footer__meta">
-      <span>Konceptualni prikaz. Nije javni sajt.</span>
-      <span id="rv-copyright"></span>
-      <span>Koncept: TYPE 4</span>
+    <div class="footer-base">
+      <a class="footer-brand" href="#vrh" aria-label="Vezuv Grupa, početna"><img src="assets/vezuv.svg" alt="" width="110" height="34"></a>
+      <span class="edition">Konceptualni prikaz. Nije javni sajt. Koncept: TYPE 4.</span>
+      <a class="back-top" href="#vrh">Na početak <span aria-hidden="true">↑</span></a>
     </div>
   </footer>
 
+  <a class="contact-seal" href="#kontakt" data-contact aria-label="Otvorite kontakt podatke">
+    <svg viewBox="0 0 100 100" aria-hidden="true">
+      <defs><path id="krug" d="M 50,50 m -38,0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0"/></defs>
+      <text textLength="237" lengthAdjust="spacing"><textPath href="#krug">KONTAKT · VEZUV GRUPA · KONTAKT · VEZUV GRUPA · </textPath></text>
+    </svg>
+    <i class="seal-plus" aria-hidden="true"></i>
+  </a>
+
+  <dialog class="overlay contact-panel" id="kontakt-panel" aria-labelledby="panel-naslov">
+    <div class="panel-top"><img src="assets/vezuv.svg" alt="Vezuv" width="108" height="33"><button class="close ui" type="button" data-close>Zatvori <i aria-hidden="true"></i></button></div>
+    <div class="panel-body">
+      <p class="eyebrow">Vezuv Grupa · Podgorica</p>
+      <h2 id="panel-naslov">Kontakt<span>.</span></h2>
+      <a class="panel-phone" href="tel:+38220210147">+382 20 210 147</a>
+      <address>Trg nezavisnosti bb<br>81000 Podgorica, Crna Gora</address>
+      <div class="panel-actions"><a class="line-link" href="https://vezuv.me/contact">Kontakt formular</a><a class="line-link" href="https://vezuv.me/career">Karijera u Vezuvu</a></div>
+    </div>
+  </dialog>
+
+  <dialog class="overlay menu-panel" id="meni" aria-labelledby="meni-naslov">
+    <div class="panel-top"><img src="assets/vezuv.svg" alt="Vezuv" width="108" height="33"><button class="close ui" type="button" data-close>Zatvori <i aria-hidden="true"></i></button></div>
+    <nav class="panel-body" aria-labelledby="meni-naslov">
+      <h2 class="eyebrow" id="meni-naslov">Meni</h2>
+      <a href="#grupa">O grupi</a><a href="#price">Priče</a><a href="#volcano">Volcano</a><a href="#kontakt">Kontakt</a>
+    </nav>
+  </dialog>
 </body>
 </html>
