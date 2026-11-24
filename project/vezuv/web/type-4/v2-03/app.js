@@ -4,6 +4,7 @@ const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 const header = document.querySelector(".masthead");
 const seal = document.querySelector(".contact-seal");
 const stories = document.querySelector(".stories");
+const branches = document.querySelector(".branches");
 const brandRelief = document.querySelector(".brand-relief");
 const menuButton = document.querySelector(".menu-toggle");
 const menu = document.getElementById("meni");
@@ -16,9 +17,11 @@ function updateLayout() {
   const sealCenter = window.innerHeight - 20 - seal.offsetHeight / 2;
   const news = stories.getBoundingClientRect();
   const overStories = news.top <= sealCenter && news.bottom >= sealCenter;
+  const shops = branches.getBoundingClientRect();
+  const overBranches = shops.top <= sealCenter && shops.bottom >= sealCenter;
   const nearLogo = brandRelief.getBoundingClientRect().top <= sealCenter;
   const readingOnPhone = compact.matches && opening.getBoundingClientRect().bottom < 90;
-  seal.classList.toggle("tucked", overStories || nearLogo || readingOnPhone);
+  seal.classList.toggle("tucked", overStories || overBranches || nearLogo || readingOnPhone);
 }
 
 let layoutFrame = 0;
@@ -86,6 +89,7 @@ const count = railControls.querySelector(".rail-count");
 let railTarget = null;
 let activeCard = -1;
 let stops = [];
+let measuredWidth = 0;
 let drag = null;
 let suppressClick = false;
 
@@ -98,9 +102,10 @@ function nearestCard() {
 }
 
 function updateRail() {
+  if (railControls.hidden || rail.clientWidth !== measuredWidth) return;
   if (railTarget !== null && Math.abs(stops[railTarget] - rail.scrollLeft) < 2) railTarget = null;
   const current = railTarget ?? nearestCard();
-  if (current === activeCard) return;
+  if (current === activeCard && cards[current].hasAttribute("aria-current")) return;
   if (activeCard >= 0) cards[activeCard].removeAttribute("aria-current");
   activeCard = current;
   cards[current].setAttribute("aria-current", "true");
@@ -111,20 +116,32 @@ function updateRail() {
 }
 
 function measureRail() {
-  const end = rail.scrollWidth - rail.clientWidth;
-  const center = rail.getBoundingClientRect().left + rail.clientWidth / 2;
-  stops = cards.map((card) => {
-    const box = card.getBoundingClientRect();
-    return Math.max(0, Math.min(end, rail.scrollLeft + box.left + box.width / 2 - center));
-  });
-  if (activeCard >= 0) rail.scrollTo({ left: stops[activeCard], behavior: "instant" });
+  measuredWidth = rail.clientWidth;
+  const end = rail.scrollWidth - measuredWidth;
   railTarget = null;
   railControls.hidden = end < 2;
+  rail.tabIndex = railControls.hidden ? -1 : 0;
   rail.classList.toggle("can-drag", end >= 2);
+  if (railControls.hidden) {
+    cards[activeCard]?.removeAttribute("aria-current");
+    return;
+  }
+  const leftEdges = cards.map(card => card.getBoundingClientRect().left);
+  // Match native swipe stops to the buttons, even when several whole cards fit.
+  stops = cards.map((card, index) => {
+    const target = end * index / Math.max(1, cards.length - 1);
+    const margin = leftEdges[index] - leftEdges[0] - target;
+    card.style.scrollMarginInlineStart = Math.max(0, margin) + "px";
+    return target;
+  });
+  const focusedCard = rail.querySelector(".story-card:focus-visible")?.closest("li");
+  railTarget = focusedCard ? cards.indexOf(focusedCard) : Math.max(0, activeCard);
+  rail.scrollTo({ left: stops[railTarget], behavior: "instant" });
   updateRail();
 }
 
 function selectCard(index) {
+  if (railControls.hidden) return;
   railTarget = Math.max(0, Math.min(cards.length - 1, index));
   rail.scrollTo({ left: stops[railTarget], behavior: reducedMotion.matches ? "instant" : "smooth" });
   updateRail();
@@ -134,7 +151,7 @@ for (const button of [previous, next]) {
   button.addEventListener("click", () => selectCard(activeCard + Number(button.dataset.step)));
 }
 rail.addEventListener("keydown", (event) => {
-  if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
+  if (railControls.hidden || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
   const keys = { ArrowLeft: activeCard - 1, ArrowRight: activeCard + 1, Home: 0, End: cards.length - 1 };
   if (!Object.hasOwn(keys, event.key)) return;
   event.preventDefault();
@@ -149,7 +166,7 @@ rail.addEventListener("wheel", () => { railTarget = null; }, { passive: true });
 rail.addEventListener("pointerdown", (event) => {
   railTarget = null;
   suppressClick = false;
-  if (event.pointerType !== "mouse" || event.button !== 0 || !event.target.closest(".story-photo")) return;
+  if (railControls.hidden || event.pointerType !== "mouse" || event.button !== 0 || !event.target.closest(".story-photo")) return;
   if (event.ctrlKey || event.shiftKey || event.metaKey || event.altKey) return;
   drag = { id: event.pointerId, x: event.clientX, left: rail.scrollLeft, index: nearestCard(), moving: false };
 });
