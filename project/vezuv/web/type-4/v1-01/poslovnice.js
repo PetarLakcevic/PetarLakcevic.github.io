@@ -1,6 +1,6 @@
 "use strict";
 
-// Poslovnice: split-flap board + bead map of the three markets.
+// City directory and bead map for the three markets.
 (() => {
   const root = document.getElementById("poslovnice");
   if (!root) return;
@@ -8,11 +8,6 @@
   const source = JSON.parse(document.getElementById("poslovnice-podaci").textContent);
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
   const ROWS = 8;
-  const CITY = 14;
-  const DRUM = " ABCČĆDĐEFGHIJKLMNOPRSŠTUVZŽ0123456789.·-";
-  const NOISE = "ABCČĆDĐEFGHIJKLMNOPRSŠTUVZŽ0123456789";
-  const SHORT = { "Istočno Novo Sarajevo": "I.N. Sarajevo", "Kozarska Dubica": "K. Dubica" };
-  const HUB = { sve: "Podgorica", cg: "Podgorica", sr: "Beograd", rs: "Banja Luka" };
   const LABELS = { cg: [42.2, 19.85], sr: [45.62, 20.25], rs: [44.05, 16.85] };
   const K = Math.cos((44 * Math.PI) / 180);
 
@@ -22,7 +17,7 @@
   const cities = [];
   for (const market of markets) {
     for (const c of market.gradovi) {
-      cities.push({ ...c, market, key: `${market.id}:${c.grad}`, wx: c.lon * K, wy: -c.lat, phase: Math.random() * 6.28, delay: 0, screen: null });
+      cities.push({ ...c, market, key: `${market.id}:${c.grad}`, wx: c.lon * K, wy: -c.lat, screen: null });
     }
   }
   const byCount = (a, b) => b.broj - a.broj || a.grad.localeCompare(b.grad, "sr");
@@ -42,103 +37,12 @@
 
   // ---------- elements
   const tabs = Array.from(root.querySelectorAll(".market"));
-  const board = root.querySelector(".board");
   const list = root.querySelector(".board-rows");
   const pageLabel = root.querySelector(".board-page");
-  const marketLabel = root.querySelector(".board-market");
   const note = root.querySelector(".board-note");
   const mapBox = root.querySelector(".branch-map");
   const canvas = mapBox.querySelector("canvas");
   const ctx = canvas.getContext("2d");
-
-  // ---------- split-flap tiles: each tile turns forward through the drum until it reaches its letter
-  const FLIP = [
-    { transform: "perspective(70px) rotateX(0deg)", filter: "brightness(1)" },
-    { transform: "perspective(70px) rotateX(-80deg)", filter: "brightness(.45)", offset: 0.5 },
-    { transform: "perspective(70px) rotateX(0deg)", filter: "brightness(1)" },
-  ];
-  const spinning = new Set();
-  let spinFrame = 0;
-
-  function makeTiles(host, n) {
-    const tiles = [];
-    for (let i = 0; i < n; i++) {
-      const tile = document.createElement("span");
-      tile.className = "tile";
-      tile.textContent = " ";
-      host.append(tile);
-      tiles.push(tile);
-    }
-    return tiles;
-  }
-
-  function spinTo(tile, ch, delay) {
-    const goal = DRUM.indexOf(ch);
-    if (reduce.matches || goal < 0) {
-      spinning.delete(tile);
-      tile.textContent = ch;
-      return;
-    }
-    let cur = DRUM.indexOf(tile.textContent);
-    if (cur < 0) cur = 0;
-    const steps = (goal - cur + DRUM.length) % DRUM.length;
-    if (steps === 0 && !spinning.has(tile)) return;
-    if (steps > 7) cur = (goal - 7 + DRUM.length) % DRUM.length;
-    tile._spin = { cur, goal, at: performance.now() + delay };
-    spinning.add(tile);
-    if (!spinFrame) spinFrame = requestAnimationFrame(runSpins);
-  }
-
-  function runSpins(now) {
-    for (const tile of spinning) {
-      const s = tile._spin;
-      if (now < s.at) continue;
-      s.cur = (s.cur + 1) % DRUM.length;
-      tile.textContent = DRUM[s.cur];
-      tile.animate(FLIP, { duration: 74, easing: "ease-in-out" });
-      s.at = now + 58 + Math.random() * 22;
-      if (s.cur === s.goal) spinning.delete(tile);
-    }
-    spinFrame = spinning.size ? requestAnimationFrame(runSpins) : 0;
-  }
-
-  function setTiles(tiles, text, delay = 0, right = false) {
-    const t = text.toUpperCase();
-    const padded = right ? t.padStart(tiles.length).slice(-tiles.length) : t.padEnd(tiles.length).slice(0, tiles.length);
-    tiles.forEach((tile, i) => spinTo(tile, padded[i], delay + i * 24));
-  }
-
-  // Small text (info column): random letters settling left to right.
-  const scrambles = new WeakMap();
-  function scramble(el, text) {
-    if (reduce.matches) {
-      el.textContent = text;
-      return;
-    }
-    const token = {};
-    scrambles.set(el, token);
-    const length = Math.max(text.length, el.textContent.length);
-    const start = performance.now();
-    let last = 0;
-    const frame = (now) => {
-      if (scrambles.get(el) !== token) return;
-      if (now - last < 45) return void requestAnimationFrame(frame);
-      last = now;
-      let out = "";
-      let done = true;
-      for (let i = 0; i < length; i++) {
-        const ch = text[i] ?? "";
-        if (ch === " " || now - start > 140 + i * 30) out += ch;
-        else {
-          done = false;
-          out += NOISE[(Math.random() * NOISE.length) | 0];
-        }
-      }
-      el.textContent = out;
-      if (!done) requestAnimationFrame(frame);
-    };
-    requestAnimationFrame(frame);
-  }
 
   // ---------- board
   let marketId = "sve";
@@ -161,13 +65,12 @@
     btn.className = "row-btn";
     btn.disabled = true;
     btn.setAttribute("aria-expanded", "false");
-    const n = span("cell cell-n");
-    const city = span("cell cell-city");
-    const mk = span("cell cell-mk");
-    const info = span("b-info");
-    for (const el of [n, city, mk, info]) el.setAttribute("aria-hidden", "true");
-    const label = span("sr-only");
-    btn.append(n, city, mk, info, label);
+    const city = span("cell-city");
+    const mk = span("cell-mk");
+    const n = span("cell-n");
+    const toggle = span("toggle-icon");
+    toggle.setAttribute("aria-hidden", "true");
+    btn.append(city, mk, n, toggle);
     const detail = document.createElement("div");
     detail.className = "row-detail";
     detail.id = `poslovnice-red-${i}`;
@@ -175,9 +78,8 @@
     btn.setAttribute("aria-controls", detail.id);
     li.append(btn, detail);
     list.append(li);
-    const row = { li, btn, info, label, detail, data: null, n: makeTiles(n, 2), city: makeTiles(city, CITY), mk: makeTiles(mk, 2) };
+    const row = { li, btn, city, mk, n, detail, data: null };
     btn.addEventListener("click", () => {
-      stopAuto();
       if (row.data) select(open === row.data ? null : row.data);
     });
     btn.addEventListener("pointerenter", (event) => {
@@ -214,37 +116,31 @@
 
   function showOpen(row) {
     const isOpen = Boolean(row.data) && row.data === open;
-    const was = row.li.classList.contains("is-open");
     if (isOpen && row.detail.dataset.key !== row.data.key) fillDetail(row, row.data);
     row.li.classList.toggle("is-open", isOpen);
     row.btn.setAttribute("aria-expanded", String(isOpen));
     row.detail.hidden = !isOpen;
-    if (row.data && was !== isOpen) scramble(row.info, isOpen ? "Na karti" : "Prikaži");
   }
 
-  function renderBoard(delay = 0) {
+  function renderBoard() {
     const items = lists[marketId];
     rows.forEach((row, i) => {
       const city = items[page * ROWS + i] || null;
-      const changed = row.data !== city;
       row.data = city;
       row.li.classList.toggle("is-empty", !city);
       row.btn.disabled = !city;
-      const wait = delay + i * 55;
-      setTiles(row.n, city ? String(city.broj).padStart(2, "0") : "", wait, true);
-      setTiles(row.city, city ? SHORT[city.grad] || city.grad : "", wait + 50);
-      setTiles(row.mk, city ? city.market.kod : "", wait + 90);
-      row.label.textContent = city ? `${city.grad}, ${city.market.naziv}, ${city.broj} ${plural(city.broj)}` : "";
-      if (changed) {
-        row.li.classList.remove("is-open");
-        row.info.textContent = city ? "Prikaži" : "";
-      }
+      row.city.textContent = city ? city.grad : "";
+      row.mk.textContent = city ? city.market.naziv : "";
+      row.n.textContent = city ? city.broj : "";
+      if (city) row.btn.setAttribute("aria-label", `${city.grad}, ${city.market.naziv}, ${city.broj} ${plural(city.broj)}`);
+      else row.btn.removeAttribute("aria-label");
       showOpen(row);
     });
-    pageLabel.textContent = `Str. ${page + 1}/${pageCount()}`;
+    pageLabel.textContent = `${page + 1} / ${pageCount()}`;
   }
 
   function goToPage(next) {
+    setHover(null);
     page = (next + pageCount()) % pageCount();
     if (open && !lists[marketId].slice(page * ROWS, page * ROWS + ROWS).includes(open)) select(null, false);
     renderBoard();
@@ -252,7 +148,6 @@
 
   for (const button of root.querySelectorAll(".pager")) {
     button.addEventListener("click", () => {
-      stopAuto();
       goToPage(page + Number(button.dataset.page));
     });
   }
@@ -262,16 +157,14 @@
     page = 0;
     open = null;
     for (const tab of tabs) tab.setAttribute("aria-pressed", String(tab.dataset.market === id));
-    marketLabel.textContent = `Volcano Bet · ${id === "sve" ? "Sva tržišta" : marketById[id].naziv}`;
+    setHover(null);
     note.textContent = notes[id];
     renderBoard();
-    lightUp(id);
     if (fly) flyTo(viewFor(id));
   }
 
   for (const tab of tabs) {
     tab.addEventListener("click", () => {
-      stopAuto();
       if (tab.dataset.market !== marketId) setMarket(tab.dataset.market);
       else if (open) select(null);
     });
@@ -286,7 +179,6 @@
 
   // Open a city from the map: switch market or page if needed.
   function reveal(city) {
-    stopAuto();
     if (open === city) return select(null);
     if (marketId !== "sve" && city.market.id !== marketId) setMarket(city.market.id, { fly: false });
     const target = Math.floor(lists[marketId].indexOf(city) / ROWS);
@@ -295,6 +187,10 @@
       renderBoard();
     }
     select(city);
+    if (window.matchMedia("(max-width: 780px)").matches) {
+      const row = rows.find((item) => item.data === city);
+      row.btn.scrollIntoView({ block: "nearest", behavior: reduce.matches ? "instant" : "smooth" });
+    }
   }
 
   function setHover(city) {
@@ -303,42 +199,6 @@
     for (const row of rows) row.li.classList.toggle("is-hover", Boolean(city) && row.data === city);
     requestDraw();
   }
-
-  // Pages turn by themselves, like a departures board, until someone uses the board.
-  let auto = !reduce.matches;
-  let autoTimer = 0;
-  let boardHovered = false;
-  function stopAuto() {
-    auto = false;
-    clearInterval(autoTimer);
-  }
-  board.addEventListener("pointerenter", () => { boardHovered = true; });
-  board.addEventListener("pointerleave", () => { boardHovered = false; });
-  board.addEventListener("focusin", stopAuto);
-  function startAuto() {
-    if (!auto || autoTimer) return;
-    autoTimer = setInterval(() => {
-      if (!auto || boardHovered || open || !visible || document.hidden || pageCount() < 2) return;
-      goToPage(page + 1);
-    }, 6500);
-  }
-
-  // Local time (all three markets share one time zone).
-  const clock = root.querySelectorAll(".board-clock b");
-  const time = new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/Belgrade", hour: "2-digit", minute: "2-digit", hourCycle: "h23" });
-  function tick() {
-    time.format(new Date()).split(":").forEach((part, i) => {
-      if (clock[i].textContent !== part) clock[i].textContent = part;
-    });
-  }
-  tick();
-  setInterval(tick, 5000);
-
-  // Market counters in the tabs.
-  const counters = tabs.map((tab) => {
-    const host = tab.querySelector(".market-count");
-    return { tiles: makeTiles(host, host.dataset.count.length), value: host.dataset.count };
-  });
 
   // ---------- bead map
   const features = source.granice.map((f) => ({ id: f.id, rings: f.rings.map((r) => r.map(([lon, lat]) => [lon * K, -lat])) }));
@@ -370,7 +230,7 @@
   let sprites = null;
   let offscreen = null;
   let visible = false;
-  let sweepStart = Infinity;
+  let pendingFrame = 0;
   const pointer = { x: 0, y: 0, inside: false };
 
   function fit(box) {
@@ -384,7 +244,7 @@
     return { x: city.wx, y: city.wy, s: base.s * 1.6 };
   }
 
-  function flyTo(target, duration = 1250) {
+  function flyTo(target, duration = 650) {
     if (!cam || reduce.matches || !W) {
       cam = { ...target };
       flight = null;
@@ -405,15 +265,6 @@
     const scale = Math.log(from.s) + (Math.log(to.s) - Math.log(from.s)) * e - lift * Math.sin(Math.PI * e);
     cam = { x: from.x + (to.x - from.x) * e, y: from.y + (to.y - from.y) * e, s: Math.exp(scale) };
     if (p >= 1) flight = null;
-  }
-
-  function lightUp(id) {
-    const hub = cities.find((c) => c.grad === HUB[id]);
-    for (const city of cities) {
-      city.delay = Math.hypot(city.wx - hub.wx, city.wy - hub.wy) * 420 + Math.random() * 120;
-    }
-    sweepStart = reduce.matches ? -1e9 : performance.now();
-    requestDraw();
   }
 
   function hexToRgb(hex) {
@@ -489,8 +340,8 @@
       light: beadPattern("#6b6d69", "#d9d8d2"),
     };
     sprites = {
-      lit: beadSprite(mix(lit, white, 0.55), lit, mix(lit, [0, 0, 0], 0.5), lit, 0.16),
-      hot: beadSprite(white, mix(lit, white, 0.7), mix(lit, white, 0.2), mix(lit, white, 0.4), 0.2),
+      lit: beadSprite(mix(lit, white, 0.55), lit, mix(lit, [0, 0, 0], 0.5), lit, 0),
+      hot: beadSprite(white, mix(lit, white, 0.7), mix(lit, white, 0.2), mix(lit, white, 0.4), 0.08),
       dim: beadSprite(mix(lit, [16, 17, 17], 0.2), mix(lit, [16, 17, 17], 0.45), mix(lit, [0, 0, 0], 0.65), lit, 0.05),
     };
     offscreen = document.createElement("canvas");
@@ -598,19 +449,14 @@
     }
 
     placeBeads();
-    const t = now - sweepStart;
     for (const city of lists.sve) {
       const s = city.screen;
       if (!s) continue;
       const inMarket = marketId === "sve" || city.market.id === marketId;
-      const focus = city === open || city === hover;
       const sprite = city === open ? sprites.hot : inMarket ? sprites.lit : sprites.dim;
-      const rise = inMarket ? Math.max(0, Math.min(1, (t - city.delay) / 380)) : 1;
-      const base = inMarket ? 1 : 0.55;
       const half = sprite.size / 2;
-      s.beads.forEach(([x, y], k) => {
-        const twinkle = reduce.matches ? 1 : 0.8 + 0.2 * Math.sin(now / 520 + city.phase + k * 1.7);
-        ctx.globalAlpha = Math.min(1, base * rise * (focus ? 1 : twinkle));
+      ctx.globalAlpha = inMarket ? 1 : 0.55;
+      s.beads.forEach(([x, y]) => {
         ctx.drawImage(sprite.canvas, x - half, y - half, sprite.size, sprite.size);
       });
     }
@@ -619,61 +465,68 @@
     // Ring around the open city.
     if (open && open.screen) {
       const s = open.screen;
-      const pulse = reduce.matches ? 0 : (now % 1800) / 1800;
-      ctx.strokeStyle = `rgba(243,242,239,${0.55 * (1 - pulse)})`;
+      ctx.strokeStyle = "rgba(243,242,239,.5)";
       ctx.beginPath();
-      ctx.arc(s.x, s.y, s.reach + 7 + pulse * 14, 0, Math.PI * 2);
+      ctx.arc(s.x, s.y, s.reach + 6, 0, Math.PI * 2);
       ctx.stroke();
     }
 
     // Labels: market names, then the hovered or open city.
-    ctx.font = '400 10px "Plex Mono", ui-monospace, monospace';
-    if ("letterSpacing" in ctx) ctx.letterSpacing = "1.2px";
+    ctx.font = "400 12px Inter, Arial, sans-serif";
     ctx.textBaseline = "middle";
     ctx.textAlign = "center";
     for (const id of marketId === "sve" && !open ? ["cg", "sr", "rs"] : []) {
       const [lat, lon] = LABELS[id];
-      const text = marketById[id].naziv.toUpperCase();
+      const text = marketById[id].naziv;
       const half = ctx.measureText(text).width / 2 + 8;
       const [x, y] = toScreen(lon * K, -lat);
-      ctx.fillStyle = isActive(id) ? "rgba(243,242,239,.55)" : "rgba(243,242,239,.22)";
+      ctx.fillStyle = isActive(id) ? "rgba(243,242,239,.5)" : "rgba(243,242,239,.22)";
       ctx.fillText(text, Math.min(W - half, Math.max(half, x)), y);
     }
     const tagged = hover || open;
     if (tagged && tagged.screen) {
       const s = tagged.screen;
-      const name = tagged.grad.toUpperCase();
+      const name = tagged.grad;
       const count = String(tagged.broj);
-      ctx.font = '400 11px "Plex Mono", ui-monospace, monospace';
-      const width = ctx.measureText(`${name}  ${count}`).width;
-      const left = s.x + s.reach + 14 + width > W - 8;
-      const x = left ? s.x - s.reach - 14 : s.x + s.reach + 14;
-      ctx.textAlign = left ? "right" : "left";
-      ctx.fillStyle = "rgba(16,17,17,.78)";
-      ctx.fillRect(left ? x - width - 8 : x - 6, s.y - 10, width + 14, 20);
+      ctx.font = "500 13px Inter, Arial, sans-serif";
+      const nameWidth = ctx.measureText(name).width;
+      ctx.font = "400 12px Inter, Arial, sans-serif";
+      const countWidth = ctx.measureText(count).width;
+      const width = nameWidth + 7 + countWidth;
+      const left = s.x + s.reach + 12 + width > W - 8;
+      const x = left ? s.x - s.reach - 12 - width : s.x + s.reach + 12;
+      ctx.textAlign = "left";
+      ctx.shadowColor = "rgba(16,17,17,.95)";
+      ctx.shadowBlur = 8;
+      ctx.font = "500 13px Inter, Arial, sans-serif";
       ctx.fillStyle = "#f3f2ef";
-      ctx.fillText(left ? `${count}  ${name}` : `${name}  ${count}`, x, s.y + 0.5);
+      ctx.fillText(name, x, s.y + 0.5);
+      ctx.font = "400 12px Inter, Arial, sans-serif";
+      ctx.fillStyle = "rgba(243,242,239,.55)";
+      ctx.fillText(count, x + nameWidth + 7, s.y + 0.5);
+      ctx.shadowBlur = 0;
     }
-    if ("letterSpacing" in ctx) ctx.letterSpacing = "0px";
   }
 
-  // Render loop: runs while the map is on screen (twinkle, flights, sweep), otherwise idle.
-  let drawing = false;
-  let lastFrame = 0;
+  // The resting map is a still image. Only a camera move needs consecutive frames.
   function requestDraw() {
-    if (drawing || !cam) return;
-    drawing = true;
-    requestAnimationFrame(frame);
+    if (!pendingFrame && visible && cam) pendingFrame = requestAnimationFrame(frame);
   }
+
   function frame(now) {
-    const busy = Boolean(flight) || (now >= sweepStart && now - sweepStart < 3200) || pointer.inside;
-    if (busy || reduce.matches || now - lastFrame > 32) {
-      lastFrame = now;
-      draw(now);
-    }
-    if (visible && !reduce.matches) requestAnimationFrame(frame);
-    else drawing = false;
+    pendingFrame = 0;
+    if (!visible) return;
+    draw(now);
+    if (flight) requestDraw();
   }
+
+  reduce.addEventListener("change", () => {
+    if (reduce.matches && flight) {
+      cam = flight.to;
+      flight = null;
+      requestDraw();
+    }
+  });
 
   function hitTest() {
     let best = null;
@@ -723,19 +576,6 @@
     if (visible) requestDraw();
   }).observe(mapBox);
 
-  // First time the section comes into view: counters turn, the board fills, the network lights up.
-  let started = false;
-  new IntersectionObserver((entries, observer) => {
-    if (started || !entries.some((entry) => entry.isIntersecting)) return;
-    started = true;
-    observer.disconnect();
-    counters.forEach((c, i) => setTiles(c.tiles, c.value, 150 + i * 140, true));
-    setMarket("sve", { fly: false });
-    startAuto();
-  }, { threshold: 0.15 }).observe(root);
-
-  marketLabel.textContent = "Volcano Bet · Sva tržišta";
-  note.textContent = notes.sve;
-  pageLabel.textContent = `Str. 1/${pageCount()}`;
-  if (document.fonts) document.fonts.load('10px "Plex Mono"').then(() => requestDraw());
+  setMarket("sve", { fly: false });
+  if (document.fonts) document.fonts.load("12px Inter").then(() => requestDraw());
 })();
