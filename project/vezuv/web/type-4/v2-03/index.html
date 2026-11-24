@@ -10,9 +10,8 @@
   <link rel="icon" href="assets/znak.svg?v=t" type="image/svg+xml">
   <link rel="preload" as="image" href="assets/vezuv-reljef.webp">
   <link rel="preload" as="font" type="font/woff2" href="assets/inter-latin.woff2" crossorigin>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=presjek">
   <script src="app.js" defer></script>
-  <script src="relief.js" defer></script>
   <script src="poslovnice.js" defer></script>
 </head>
 <body>
@@ -151,10 +150,10 @@
 
     <div class="brand-relief" id="znak">
       <picture>
-        <source media="(max-width: 640px)" srcset="assets/vezuv-znak-uski.webp" width="1080" height="460">
-        <img src="assets/vezuv-znak-reljef.webp" width="2560" height="400" loading="lazy" decoding="async" alt="Vezuvov znak u zidu od grafitnih kuglica: crvene trake sa izdignutom konturom i bronzani trouglovi.">
+        <source media="(max-width: 600px)" srcset="assets/presjek-uski.webp" width="960" height="196">
+        <source media="(max-width: 1100px)" srcset="assets/presjek-srednji.webp" width="1760" height="192">
+        <img src="assets/presjek-siroki.webp" width="2880" height="206" loading="lazy" decoding="async" alt="Crveno-bronzani znak Vezuva utisnut u slojeve vulkanskog reljefa.">
       </picture>
-      <canvas class="relief-live" aria-hidden="true"></canvas>
     </div>
   </main>
 

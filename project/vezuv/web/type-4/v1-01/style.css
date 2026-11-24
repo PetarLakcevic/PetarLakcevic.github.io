@@ -247,7 +247,7 @@ address { font-style: normal; }
 .age-note { margin-top: 1.5rem; display: flex; gap: .8rem; align-items: baseline; color: var(--dim); font: .875rem/1.55 var(--mono); }
 .age-note span { color: var(--paper); }
 .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
-.branches { --map-lit: var(--ember); padding-bottom: clamp(4.5rem,8vw,8.5rem); }
+.branches { --map-lit: var(--ember); padding-bottom: clamp(1.75rem,2.6vw,3rem); }
 .branches-head {
   display: grid;
   grid-template-columns: 1.65fr 1fr;
@@ -360,12 +360,11 @@ address { font-style: normal; }
 }
 .branch-map canvas.is-pointing { cursor: pointer; }
 
-.brand-relief { position: relative; display: block; background: var(--ground); }
-.relief-live { position: absolute; inset: 0; display: block; width: 100%; height: 100%; opacity: 0; transition: opacity .8s var(--ease); }
-.brand-relief.is-live .relief-live { opacity: 1; }
-.brand-relief img { display: block; width: 100%; height: max(10.5rem, 15.625vw); object-fit: cover; }
+.brand-relief { scroll-margin-top: clamp(4.5rem,20svh,15rem); }
+.brand-relief picture, .brand-relief img { display: block; width: 100%; }
+.brand-relief img { height: auto; }
 
-.footer { padding-top: clamp(3.5rem,6.5vw,7.5rem); overflow: hidden; isolation: isolate; }
+.footer { padding-top: clamp(1.5rem,2.8vw,3.5rem); overflow: hidden; isolation: isolate; }
 .footer-map {
   position: absolute;
   z-index: -1;
@@ -478,9 +477,6 @@ dialog:not([open]) { display: none; }
 }
 @media (min-width: 781px) {
   .masthead .menu-toggle { display: none !important; }
-}
-@media (max-width: 640px) {
-  .brand-relief img { height: auto; }
 }
 @media (max-width: 520px) {
   .masthead:not(.has-menu) { flex-wrap: wrap; gap: 0 1rem; }
