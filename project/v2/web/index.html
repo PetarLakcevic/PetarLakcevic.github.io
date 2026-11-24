@@ -35,6 +35,10 @@ h2 { margin: 0; font-size: 20px; font-weight: 600; line-height: 1.3; }
 .now img { width: clamp(200px, 22vw, 300px); height: auto; }
 .ed { display: inline-block; vertical-align: .3em; margin-left: .12em; padding: .16em .5em .2em; font-size: .42em; font-weight: 600; line-height: 1; color: #fff; background: var(--ink); border-radius: 999px; }
 
+.edh { display: flex; align-items: center; gap: 10px; margin: 0 0 10px; font-size: 14.5px; color: var(--muted); }
+.edh .ed { margin: 0; font-size: 12px; vertical-align: 0; }
+.edh b { font-weight: 600; color: var(--ink); }
+.edb + .edb { margin-top: clamp(22px, 2.6vw, 34px); }
 .groups { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(12px, 1.6vw, 22px); align-items: start; }
 .group { background: var(--mist); border-radius: 18px; padding: 8px; display: grid; gap: 8px; min-width: 0; }
 h3 { margin: 4px 6px 2px; font-size: 15px; font-weight: 600; line-height: 1.3; }
@@ -135,13 +139,14 @@ dialog :focus-visible { outline-color: #fff; }
 .hub a:hover .soft, .hub a:focus-visible .soft { --blur: 0px; transform: none; }
 .pic-v2 { position: relative; background: #ECEBF0; }
 .pic-v2::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(255,255,255,0) 55%, rgba(236,235,240,.55)); pointer-events: none; }
-.pic-marks .soft { display: flex; align-items: center; justify-content: center; gap: 5%; padding: 0 10%; }
-.pic-marks .soft svg { flex: 1 1 0; min-width: 0; height: auto; max-height: 52%; }
+.pic-marks .soft { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: repeat(3, minmax(0, 1fr)); place-items: center; gap: 4% 6%; padding: 7% 14%; }
+.pic-marks .soft svg { width: 100%; height: 100%; min-width: 0; min-height: 0; }
 .pic-sites .soft { --blur: 7px; }
-.win { position: absolute; width: 62%; aspect-ratio: 1200 / 575; overflow: hidden; border-radius: 10px; box-shadow: 0 18px 40px rgba(20, 16, 24, .28); }
+.win { position: absolute; width: 56%; aspect-ratio: 1200 / 575; overflow: hidden; border-radius: 10px; box-shadow: 0 18px 40px rgba(20, 16, 24, .28); }
 .win img { width: 100%; height: auto; }
-.w1 { left: 9%; top: 15%; }
-.w2 { right: 9%; bottom: 13%; }
+.w1 { left: 7%; top: 9%; }
+.w2 { right: 7%; bottom: 9%; z-index: 2; }
+.w3 { left: 22%; top: 32%; z-index: 1; }
 .pic-hero { aspect-ratio: 1200 / 575; }
 .pic-hero img { object-position: 50% 0; }
 .web-note { margin: 0; max-width: 60ch; font-size: 16px; line-height: 1.5; color: #55545F; text-wrap: pretty; }
@@ -155,7 +160,7 @@ dialog :focus-visible { outline-color: #fff; }
 </style><script>try{if(localStorage.getItem('vezuv-gate-v2')!=="09ca0d0a209ddaf3f856212aa1c76b4b1e6cb23a7f2e22371e6e68aff2f54ed0")location.replace('../')}catch(e){location.replace('../')}</script></head><body>
 <main>
 <header><a class="back" href="../">← Nazad</a><div class="top"><h1>Primeri sajta</h1></div></header>
-<div class="hub"><a href="type-1/"><div class="pic pic-hero"><img src="type-1/cover.jpg" alt=""></div><div class="name"><b>Type 1</b><small>Tamni</small><svg class="arr" viewBox="0 0 40 10" width="40" height="10" fill="none" stroke="currentColor" aria-hidden="true"><path d="M0 5h39M34.5.5 39 5l-4.5 4.5"/></svg></div></a><a href="type-2/"><div class="pic pic-hero"><img src="type-2/cover.jpg" alt=""></div><div class="name"><b>Type 2</b><small>Svetli</small><svg class="arr" viewBox="0 0 40 10" width="40" height="10" fill="none" stroke="currentColor" aria-hidden="true"><path d="M0 5h39M34.5.5 39 5l-4.5 4.5"/></svg></div></a></div>
+<div class="hub"><a href="type-1/"><div class="pic pic-hero"><img src="type-1/cover.jpg" alt=""></div><div class="name"><b>Type 1</b><small>Tamni</small><svg class="arr" viewBox="0 0 40 10" width="40" height="10" fill="none" stroke="currentColor" aria-hidden="true"><path d="M0 5h39M34.5.5 39 5l-4.5 4.5"/></svg></div></a><a href="type-2/"><div class="pic pic-hero"><img src="type-2/cover.jpg" alt=""></div><div class="name"><b>Type 2</b><small>Svetli</small><svg class="arr" viewBox="0 0 40 10" width="40" height="10" fill="none" stroke="currentColor" aria-hidden="true"><path d="M0 5h39M34.5.5 39 5l-4.5 4.5"/></svg></div></a><a href="type-3/"><div class="pic pic-hero"><img src="type-3/cover.jpg" alt=""></div><div class="name"><b>Type 3</b><small>Crveni</small><svg class="arr" viewBox="0 0 40 10" width="40" height="10" fill="none" stroke="currentColor" aria-hidden="true"><path d="M0 5h39M34.5.5 39 5l-4.5 4.5"/></svg></div></a><a href="type-4/"><div class="pic pic-hero"><img src="type-4/cover.jpg" alt=""></div><div class="name"><b>Type 4</b><small>Svetli</small><svg class="arr" viewBox="0 0 40 10" width="40" height="10" fill="none" stroke="currentColor" aria-hidden="true"><path d="M0 5h39M34.5.5 39 5l-4.5 4.5"/></svg></div></a><a href="type-5/"><div class="pic pic-hero"><img src="type-5/cover.jpg" alt=""></div><div class="name"><b>Type 5</b><small>Tamni</small><svg class="arr" viewBox="0 0 40 10" width="40" height="10" fill="none" stroke="currentColor" aria-hidden="true"><path d="M0 5h39M34.5.5 39 5l-4.5 4.5"/></svg></div></a></div>
 <p class="web-note">Ovo su samo naša istraživanja i primeri kako bi nešto u ovom smeru moglo da izgleda.</p>
 </main>
 
