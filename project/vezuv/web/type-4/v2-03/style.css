@@ -122,7 +122,7 @@ address { font-style: normal; }
 .menu-icon { position: relative; width: 16px; height: 8px; border-block: 1px solid currentColor; }
 
 .home-header { min-height: 3.4rem; padding-block: .3rem; }
-.home-header .logo img { width: clamp(5rem,6vw,6.4rem); }
+.home-header .logo img { width: clamp(5.75rem,7vw,7.4rem); }
 .home-header .desktop-nav { font-size: .8125rem; }
 .opening-art {
   height: min(51vh, 40vw);
@@ -563,3 +563,16 @@ dialog:not([open]) { display: none; }
 .hero-svg .f:hover .r { fill-opacity: .42; }
 .hero-svg .f:hover .b { fill-opacity: .55; }
 .hero-svg .f:hover .l { stroke-opacity: .3; }
+/* "O grupi": ključni podaci u lijevoj koloni, u visini teksta desno. Broj na tankoj liniji sa kratkim
+   bronzanim početkom; brojeve odbrojava brojke.js kad sekcija uđe u ekran. */
+.intro-facts { margin: clamp(2.6rem,6svh,4rem) 0 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1.75rem,3vw,2.75rem) clamp(1.5rem,3vw,3.25rem); max-width: 36rem; }
+.intro-facts div { display: flex; flex-direction: column-reverse; justify-content: flex-end; padding-top: 1rem; border-top: 1px solid var(--rule); position: relative; }
+.intro-facts div::before { content: ""; position: absolute; top: -1px; left: 0; width: 2.4rem; height: 1px; background: var(--bronze); }
+.intro-facts dd { margin: 0; font-size: clamp(2.3rem,3.6vw,3.9rem); line-height: 1; letter-spacing: -.065em; font-variant-numeric: tabular-nums; color: var(--paper); }
+.intro-facts dt { margin-top: .75rem; max-width: 15rem; font: 400 .8125rem/1.45 var(--mono); letter-spacing: .01em; color: var(--dim); }
+@media (min-width: 781px) {
+  .intro { display: grid; grid-template-columns: 50% minmax(0, 1fr); align-items: end; }
+  .intro > .eyebrow, .intro > .statement { grid-column: 1 / -1; }
+  .intro-text { grid-column: 2; grid-row: 3; margin-left: clamp(3.25rem,4.7vw,5.5rem); }
+  .intro-facts { grid-column: 1; grid-row: 3; margin-top: clamp(2.35rem,8.6svh,6.2rem); padding-right: clamp(1rem,3vw,3rem); }
+}
