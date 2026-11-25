@@ -36,6 +36,22 @@
       fit();
       box.appendChild(live);
       img.hidden = true;
+
+      // Grotlo: miš nad fasetama kratera (.z) pušta poligonalni dim; kad ode, dim se još malo diže pa nestane.
+      if (live.querySelector(".dim-skup")) {
+        let gasi = 0;
+        const uGrotlu = (el) => !!(el && el.closest && el.closest(".z"));
+        live.addEventListener("pointerover", (e) => {
+          if (!uGrotlu(e.target)) return;
+          clearTimeout(gasi);
+          live.classList.add("dimi");
+        });
+        live.addEventListener("pointerout", (e) => {
+          if (!uGrotlu(e.target) || uGrotlu(e.relatedTarget)) return;
+          clearTimeout(gasi);
+          gasi = setTimeout(() => live.classList.remove("dimi"), 2200);
+        });
+      }
       if (window.ResizeObserver) new ResizeObserver(fit).observe(box);
       else window.addEventListener("resize", fit);
     })

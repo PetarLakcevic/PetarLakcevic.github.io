@@ -576,3 +576,22 @@ dialog:not([open]) { display: none; }
   .intro-text { grid-column: 2; grid-row: 3; margin-left: clamp(3.25rem,4.7vw,5.5rem); }
   .intro-facts { grid-column: 1; grid-row: 3; margin-top: clamp(2.35rem,8.6svh,6.2rem); padding-right: clamp(1rem,3vw,3rem); }
 }
+/* Dim iz grotla: kad je miš nad kraterom, poligonalni oblačići se jedan za drugim dižu, šire i gase.
+   Jedva providni; uz smanjeno kretanje samo mirno stoje iznad kratera. */
+.hero-svg .dim-skup { transition: opacity 2.4s ease; }
+.hero-svg.dimi .dim-skup { opacity: 1; transition-duration: 1.2s; }
+.hero-svg .dim { transform-box: fill-box; transform-origin: 50% 70%; opacity: 0; animation: dim-dize 8s linear infinite; animation-play-state: paused; }
+.hero-svg.dimi .dim { animation-play-state: running; }
+.hero-svg .dim.d1 { animation-delay: -2s; }
+.hero-svg .dim.d2 { animation-delay: -4s; }
+.hero-svg .dim.d3 { animation-delay: -6s; }
+@keyframes dim-dize {
+  0% { transform: translate(0, 10px) scale(.7); opacity: 0; }
+  18% { opacity: 1; }
+  65% { opacity: .75; }
+  100% { transform: translate(46px, -170px) scale(1.9) rotate(4deg); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-svg .dim { animation: none; opacity: 0; }
+  .hero-svg .dim.d1 { opacity: .8; transform: translate(14px, -60px) scale(1.25); }
+}
