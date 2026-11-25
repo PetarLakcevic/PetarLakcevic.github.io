@@ -275,6 +275,15 @@
   const mix = (a, b, t) => a.map((v, i) => Math.round(v + (b[i] - v) * t));
   const rgb = (c, a = 1) => `rgba(${c[0]},${c[1]},${c[2]},${a})`;
 
+  // Poligon: svaka "kuglica" mreže je mali obrnuti trougao (kao vrh znaka i fasete uvodne slike).
+  function tri(g, x, y, r) {
+    g.beginPath();
+    g.moveTo(x - r * 0.866, y - r * 0.5);
+    g.lineTo(x + r * 0.866, y - r * 0.5);
+    g.lineTo(x, y + r);
+    g.closePath();
+  }
+
   function beadPattern(fill, shine) {
     const w = Math.max(4, Math.round(DX * dpr));
     const h = Math.max(4, Math.round(2 * RH * dpr));
@@ -284,12 +293,14 @@
     const g = c.getContext("2d");
     const r = w * 0.36;
     for (const [x, y] of [[0, 0], [w, 0], [0, h], [w, h], [w / 2, h / 2]]) {
-      const grad = g.createRadialGradient(x - r * 0.35, y - r * 0.45, r * 0.05, x, y, r);
+      // dvije fasete kao u znaku 03: svjetlija lijeva, tamnija desna polovina
+      const grad = g.createLinearGradient(x - r, 0, x + r, 0);
       grad.addColorStop(0, shine);
+      grad.addColorStop(0.5, shine);
+      grad.addColorStop(0.5, fill);
       grad.addColorStop(1, fill);
       g.fillStyle = grad;
-      g.beginPath();
-      g.arc(x, y, r, 0, Math.PI * 2);
+      tri(g, x, y, r * 1.22);
       g.fill();
     }
     const pattern = ctx.createPattern(c, "repeat");
@@ -309,13 +320,13 @@
     g.fillStyle = halo;
     g.fillRect(0, 0, size, size);
     const r = DX * 0.42 * dpr;
-    const bead = g.createRadialGradient(m - r * 0.35, m - r * 0.45, r * 0.05, m, m, r);
+    const bead = g.createLinearGradient(m - r, 0, m + r, 0);
     bead.addColorStop(0, rgb(core));
-    bead.addColorStop(0.55, rgb(mid));
-    bead.addColorStop(1, rgb(edge));
+    bead.addColorStop(0.5, rgb(mix(core, mid, 0.4)));
+    bead.addColorStop(0.5, rgb(mid));
+    bead.addColorStop(1, rgb(mix(mid, edge, 0.5)));
     g.fillStyle = bead;
-    g.beginPath();
-    g.arc(m, m, r, 0, Math.PI * 2);
+    tri(g, m, m, r * 1.22);
     g.fill();
     return { canvas: c, size: size / dpr };
   }
@@ -466,8 +477,7 @@
     if (open && open.screen) {
       const s = open.screen;
       ctx.strokeStyle = "rgba(243,242,239,.5)";
-      ctx.beginPath();
-      ctx.arc(s.x, s.y, s.reach + 6, 0, Math.PI * 2);
+      tri(ctx, s.x, s.y, 2 * (s.reach + 5));
       ctx.stroke();
     }
 

@@ -524,3 +524,42 @@ dialog:not([open]) { display: none; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
+
+/* Poligon (uz uvodnu sliku od ravnih trouglastih faseta): sitni tanki trouglovi umjesto tačaka.
+   Tačke u naslovima i razmaci u traci "Iz svijeta Vezuva" su mali crveni obrnuti trouglovi (vrh znaka),
+   natpisi sekcija imaju tanak bronzani trougao u konturi (bronzani uglovi znaka). */
+.accent, .panel-body h2 span, .title-echo i {
+  display: inline-block;
+  width: .21em;
+  height: .182em;
+  margin-left: .06em;
+  overflow: hidden;
+  color: transparent;
+  vertical-align: baseline;
+  background: var(--red);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+.title-echo i { width: .16em; height: .139em; margin-inline: .04em .02em; vertical-align: .3em; }
+.eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: .72em;
+  height: .62em;
+  margin-right: .72em;
+  vertical-align: .02em;
+  background: var(--bronze);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 12'%3E%3Cpath d='M1 1h12L7 11z' fill='none' stroke='%23000' stroke-width='1.25' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 12'%3E%3Cpath d='M1 1h12L7 11z' fill='none' stroke='%23000' stroke-width='1.25' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+.footer-map .map-mesh { stroke: rgb(243 242 239 / 2.4%); stroke-linejoin: miter; }
+/* Uvodna slika reaguje na miš: faseta pod mišem se malo osvijetli, a obrnute fasete pokažu boje znaka
+   (crvene trake, bronzani uglovi i vrh, linije). Na izlazu se sporo gase, pa za mišem ostaje kratak trag.
+   SVG ugrađuje hero.js; klase pravi izvor/vulkan_poligon.py. */
+.opening-art .hero-svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.hero-svg .f > * { transition: fill-opacity 1.6s ease-out, stroke-opacity 1.6s ease-out; }
+.hero-svg .f:hover > * { transition-duration: .12s; }
+.hero-svg .f:hover .h { fill-opacity: .05; }
+.hero-svg .f:hover .g { fill-opacity: .06; }
+.hero-svg .f:hover .r { fill-opacity: .42; }
+.hero-svg .f:hover .b { fill-opacity: .55; }
+.hero-svg .f:hover .l { stroke-opacity: .3; }
